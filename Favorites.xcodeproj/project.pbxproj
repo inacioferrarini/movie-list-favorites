@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BBE77CBA2323FDB400A0C872 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE77CB92323FDB400A0C872 /* Common.framework */; };
 		BBF0A1C02323F0BC00552AF2 /* Favorites.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF0A1B62323F0BC00552AF2 /* Favorites.framework */; };
 		BBF0A1C52323F0BC00552AF2 /* FavoritesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0A1C42323F0BC00552AF2 /* FavoritesTests.swift */; };
 		BBF0A1C72323F0BC00552AF2 /* Favorites.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF0A1B92323F0BC00552AF2 /* Favorites.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,12 +24,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BBE77CB92323FDB400A0C872 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF0A1B62323F0BC00552AF2 /* Favorites.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Favorites.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF0A1B92323F0BC00552AF2 /* Favorites.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Favorites.h; sourceTree = "<group>"; };
 		BBF0A1BA2323F0BC00552AF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBF0A1BF2323F0BC00552AF2 /* FavoritesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FavoritesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF0A1C42323F0BC00552AF2 /* FavoritesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTests.swift; sourceTree = "<group>"; };
 		BBF0A1C62323F0BC00552AF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BBF0A22B2323F5A500552AF2 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBE77CBA2323FDB400A0C872 /* Common.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +60,7 @@
 				BBF0A1B82323F0BC00552AF2 /* Favorites */,
 				BBF0A1C32323F0BC00552AF2 /* FavoritesTests */,
 				BBF0A1B72323F0BC00552AF2 /* Products */,
+				BBF0A22A2323F5A500552AF2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,6 +89,15 @@
 				BBF0A1C62323F0BC00552AF2 /* Info.plist */,
 			);
 			path = FavoritesTests;
+			sourceTree = "<group>";
+		};
+		BBF0A22A2323F5A500552AF2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BBE77CB92323FDB400A0C872 /* Common.framework */,
+				BBF0A22B2323F5A500552AF2 /* Common.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
