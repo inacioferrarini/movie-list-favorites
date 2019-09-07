@@ -74,6 +74,13 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
+		BB6191F22324228C007E4C48 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		BBF0A1AC2323F0BC00552AF2 = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +103,7 @@
 		BBF0A1B82323F0BC00552AF2 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				BB6191F22324228C007E4C48 /* Resources */,
 				BB6191E6232411CF007E4C48 /* Coordinators */,
 				BB6191E7232411D6007E4C48 /* Modules */,
 				BBF0A1B92323F0BC00552AF2 /* Favorites.h */,
