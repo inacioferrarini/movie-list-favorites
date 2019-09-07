@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB6191E9232411E9007E4C48 /* FavoritesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6191E8232411E9007E4C48 /* FavoritesModule.swift */; };
+		BB6191ED232413BA007E4C48 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6191EC232413BA007E4C48 /* FavoritesCoordinator.swift */; };
 		BBE77CBA2323FDB400A0C872 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE77CB92323FDB400A0C872 /* Common.framework */; };
 		BBF0A1C02323F0BC00552AF2 /* Favorites.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF0A1B62323F0BC00552AF2 /* Favorites.framework */; };
 		BBF0A1C52323F0BC00552AF2 /* FavoritesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0A1C42323F0BC00552AF2 /* FavoritesTests.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BB6191E8232411E9007E4C48 /* FavoritesModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesModule.swift; sourceTree = "<group>"; };
+		BB6191EC232413BA007E4C48 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
 		BBE77CB92323FDB400A0C872 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF0A1B62323F0BC00552AF2 /* Favorites.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Favorites.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF0A1B92323F0BC00552AF2 /* Favorites.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Favorites.h; sourceTree = "<group>"; };
@@ -54,6 +58,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB6191E6232411CF007E4C48 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				BB6191EC232413BA007E4C48 /* FavoritesCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		BB6191E7232411D6007E4C48 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				BB6191E8232411E9007E4C48 /* FavoritesModule.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		BBF0A1AC2323F0BC00552AF2 = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +96,8 @@
 		BBF0A1B82323F0BC00552AF2 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				BB6191E6232411CF007E4C48 /* Coordinators */,
+				BB6191E7232411D6007E4C48 /* Modules */,
 				BBF0A1B92323F0BC00552AF2 /* Favorites.h */,
 				BBF0A1BA2323F0BC00552AF2 /* Info.plist */,
 			);
@@ -163,6 +185,7 @@
 				TargetAttributes = {
 					BBF0A1B52323F0BC00552AF2 = {
 						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
 					};
 					BBF0A1BE2323F0BC00552AF2 = {
 						CreatedOnToolsVersion = 10.3;
@@ -229,6 +252,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB6191ED232413BA007E4C48 /* FavoritesCoordinator.swift in Sources */,
+				BB6191E9232411E9007E4C48 /* FavoritesModule.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,6 +401,7 @@
 		BBF0A1CB2323F0BC00552AF2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -393,6 +419,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.inacio.concrete.Favorites;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -401,6 +428,7 @@
 		BBF0A1CC2323F0BC00552AF2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -426,6 +454,7 @@
 		BBF0A1CE2323F0BC00552AF2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TS43775FV9;
 				INFOPLIST_FILE = FavoritesTests/Info.plist;
@@ -444,6 +473,7 @@
 		BBF0A1CF2323F0BC00552AF2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TS43775FV9;
 				INFOPLIST_FILE = FavoritesTests/Info.plist;
