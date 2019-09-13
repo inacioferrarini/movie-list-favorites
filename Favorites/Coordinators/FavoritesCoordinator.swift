@@ -15,13 +15,13 @@ public class FavoritesCoordinator: Coordinator {
     }()
     
     public lazy var viewController: UIViewController = {
-//        guard let vc = MovieCatalogViewController.instantiate() else { return UIViewController() }
         let vc = UIViewController()
         vc.view.backgroundColor = UIColor.red
         if let tabBarItem = self.tabBarItem {
             vc.tabBarItem = tabBarItem
         }
-        return vc
+        vc.title = "Favorites"
+        return UINavigationController(rootViewController: vc)
     }()
 
     public func start() {
