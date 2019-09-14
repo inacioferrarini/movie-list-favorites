@@ -10,7 +10,7 @@ public class FavoritesCoordinator: Coordinator {
     
     lazy var tabBarItem: UITabBarItem? = {
         return UITabBarItem(title: "Favorites",
-                            image: Assets.Icons.Modules.Favorite,
+                            image: Assets.Icons.Modules.favorite,
                             selectedImage: nil)
     }()
     
