@@ -9,7 +9,7 @@ public class FavoritesCoordinator: Coordinator {
     }
     
     lazy var tabBarItem: UITabBarItem? = {
-        return UITabBarItem(title: "Favorites",
+        return UITabBarItem(title: tabBarItemTitle,
                             image: Assets.Icons.Modules.favorite,
                             selectedImage: nil)
     }()
@@ -20,7 +20,7 @@ public class FavoritesCoordinator: Coordinator {
         if let tabBarItem = self.tabBarItem {
             vc.tabBarItem = tabBarItem
         }
-        vc.title = "Favorites"
+        vc.title = tabBarItemTitle     // HERE -- Move to ViewController
         return UINavigationController(rootViewController: vc)
     }()
 
@@ -28,7 +28,14 @@ public class FavoritesCoordinator: Coordinator {
         var viewControllers = tabBar.viewControllers ?? []
         viewControllers += [self.viewController]
         tabBar.viewControllers = viewControllers
-        print("starting FavoritesCoordinator ... ")
+    }
+    
+}
+
+extension FavoritesCoordinator: Internationalizable {
+    
+    var tabBarItemTitle: String {
+        return string("tabBarItemTitle", languageCode: "en-US")
     }
     
 }

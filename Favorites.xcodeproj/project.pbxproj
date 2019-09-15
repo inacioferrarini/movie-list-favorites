@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB58BFE7232EBE1400A13142 /* FavoritesCoordinator.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB58BFE9232EBE1400A13142 /* FavoritesCoordinator.strings */; };
 		BB6191E9232411E9007E4C48 /* FavoritesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6191E8232411E9007E4C48 /* FavoritesModule.swift */; };
 		BB6191ED232413BA007E4C48 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6191EC232413BA007E4C48 /* FavoritesCoordinator.swift */; };
 		BBE77CBA2323FDB400A0C872 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE77CB92323FDB400A0C872 /* Common.framework */; };
@@ -26,6 +27,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BB58BFEA232EBE3A00A13142 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/FavoritesCoordinator.strings"; sourceTree = "<group>"; };
+		BB58BFEB232EBE4100A13142 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/FavoritesCoordinator.strings"; sourceTree = "<group>"; };
 		BB6191E8232411E9007E4C48 /* FavoritesModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesModule.swift; sourceTree = "<group>"; };
 		BB6191EC232413BA007E4C48 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
 		BBE77CB92323FDB400A0C872 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				BB6191EC232413BA007E4C48 /* FavoritesCoordinator.swift */,
+				BB58BFE9232EBE1400A13142 /* FavoritesCoordinator.strings */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -205,7 +209,8 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
+				"en-US",
+				"pt-BR",
 			);
 			mainGroup = BBF0A1AC2323F0BC00552AF2;
 			productRefGroup = BBF0A1B72323F0BC00552AF2 /* Products */;
@@ -223,6 +228,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB58BFE7232EBE1400A13142 /* FavoritesCoordinator.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,11 +289,24 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		BB58BFE9232EBE1400A13142 /* FavoritesCoordinator.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BB58BFEA232EBE3A00A13142 /* en-US */,
+				BB58BFEB232EBE4100A13142 /* pt-BR */,
+			);
+			name = FavoritesCoordinator.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		BBF0A1C82323F0BC00552AF2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -352,6 +371,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
