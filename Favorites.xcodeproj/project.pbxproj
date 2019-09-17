@@ -107,9 +107,9 @@
 		BBF0A1B82323F0BC00552AF2 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
-				BB6191F22324228C007E4C48 /* Resources */,
 				BB6191E6232411CF007E4C48 /* Coordinators */,
 				BB6191E7232411D6007E4C48 /* Modules */,
+				BB6191F22324228C007E4C48 /* Resources */,
 				BBF0A1B92323F0BC00552AF2 /* Favorites.h */,
 				BBF0A1BA2323F0BC00552AF2 /* Info.plist */,
 			);
@@ -209,6 +209,7 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				en,
 				"en-US",
 				"pt-BR",
 			);
