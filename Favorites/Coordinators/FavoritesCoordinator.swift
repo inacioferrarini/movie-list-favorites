@@ -38,11 +38,6 @@ public class FavoritesCoordinator: Coordinator {
         tabBar.viewControllers = viewControllers
     }
     
-    // MARK: - Coordinator
-    
-    
-    
-    
 }
 
 extension FavoritesCoordinator: Internationalizable {
