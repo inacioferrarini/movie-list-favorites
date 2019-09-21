@@ -212,6 +212,7 @@
 				en,
 				"en-US",
 				"pt-BR",
+				Base,
 			);
 			mainGroup = BBF0A1AC2323F0BC00552AF2;
 			productRefGroup = BBF0A1B72323F0BC00552AF2 /* Products */;
