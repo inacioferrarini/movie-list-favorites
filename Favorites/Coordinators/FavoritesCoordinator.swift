@@ -2,10 +2,12 @@ import Common
 
 public class FavoritesCoordinator: Coordinator {
     
+    
     // MARK: - Private Properties
     
     private var tabBar: UITabBarController
     private var appContext: AppContext
+    
     
     // MARK: - Initialization
     
@@ -17,6 +19,7 @@ public class FavoritesCoordinator: Coordinator {
     deinit {
         try? self.coreDataStack.saveContext()
     }
+    
     
     // MARK: - Lazy Properties
   
@@ -42,6 +45,7 @@ public class FavoritesCoordinator: Coordinator {
         vc.title = tabBarItemTitle     // HERE -- Move to ViewController
         return UINavigationController(rootViewController: vc)
     }()
+    
     
     // MARK: - Public Methods
     
