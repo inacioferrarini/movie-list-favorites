@@ -10,6 +10,9 @@
 		BB58BFE7232EBE1400A13142 /* FavoritesCoordinator.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB58BFE9232EBE1400A13142 /* FavoritesCoordinator.strings */; };
 		BB6191E9232411E9007E4C48 /* FavoritesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6191E8232411E9007E4C48 /* FavoritesModule.swift */; };
 		BB6191ED232413BA007E4C48 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6191EC232413BA007E4C48 /* FavoritesCoordinator.swift */; };
+		BBD5097623383206009CA4EE /* Favorites.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BBD5097423383206009CA4EE /* Favorites.xcdatamodeld */; };
+		BBD50979233832F5009CA4EE /* Favorite+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD50977233832F5009CA4EE /* Favorite+CoreDataClass.swift */; };
+		BBD5097A233832F5009CA4EE /* Favorite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD50978233832F5009CA4EE /* Favorite+CoreDataProperties.swift */; };
 		BBE77CBA2323FDB400A0C872 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE77CB92323FDB400A0C872 /* Common.framework */; };
 		BBF0A1C02323F0BC00552AF2 /* Favorites.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF0A1B62323F0BC00552AF2 /* Favorites.framework */; };
 		BBF0A1C52323F0BC00552AF2 /* FavoritesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0A1C42323F0BC00552AF2 /* FavoritesTests.swift */; };
@@ -31,6 +34,9 @@
 		BB58BFEB232EBE4100A13142 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/FavoritesCoordinator.strings"; sourceTree = "<group>"; };
 		BB6191E8232411E9007E4C48 /* FavoritesModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesModule.swift; sourceTree = "<group>"; };
 		BB6191EC232413BA007E4C48 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
+		BBD5097523383206009CA4EE /* Favorites.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Favorites.xcdatamodel; sourceTree = "<group>"; };
+		BBD50977233832F5009CA4EE /* Favorite+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorite+CoreDataClass.swift"; sourceTree = "<group>"; };
+		BBD50978233832F5009CA4EE /* Favorite+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorite+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BBE77CB92323FDB400A0C872 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF0A1B62323F0BC00552AF2 /* Favorites.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Favorites.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF0A1B92323F0BC00552AF2 /* Favorites.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Favorites.h; sourceTree = "<group>"; };
@@ -78,9 +84,27 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		BB6191F22324228C007E4C48 /* Resources */ = {
+		BBD5096F23382E81009CA4EE /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				BBD5097023382E89009CA4EE /* Entities */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		BBD5097023382E89009CA4EE /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				BBD50977233832F5009CA4EE /* Favorite+CoreDataClass.swift */,
+				BBD50978233832F5009CA4EE /* Favorite+CoreDataProperties.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		BBD50973233831F1009CA4EE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BBD5097423383206009CA4EE /* Favorites.xcdatamodeld */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -107,9 +131,10 @@
 		BBF0A1B82323F0BC00552AF2 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				BBD5096F23382E81009CA4EE /* CoreData */,
 				BB6191E6232411CF007E4C48 /* Coordinators */,
 				BB6191E7232411D6007E4C48 /* Modules */,
-				BB6191F22324228C007E4C48 /* Resources */,
+				BBD50973233831F1009CA4EE /* Resources */,
 				BBF0A1B92323F0BC00552AF2 /* Favorites.h */,
 				BBF0A1BA2323F0BC00552AF2 /* Info.plist */,
 			);
@@ -268,8 +293,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBD5097623383206009CA4EE /* Favorites.xcdatamodeld in Sources */,
+				BBD5097A233832F5009CA4EE /* Favorite+CoreDataProperties.swift in Sources */,
 				BB6191ED232413BA007E4C48 /* FavoritesCoordinator.swift in Sources */,
 				BB6191E9232411E9007E4C48 /* FavoritesModule.swift in Sources */,
+				BBD50979233832F5009CA4EE /* Favorite+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,6 +578,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		BBD5097423383206009CA4EE /* Favorites.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				BBD5097523383206009CA4EE /* Favorites.xcdatamodel */,
+			);
+			currentVersion = BBD5097523383206009CA4EE /* Favorites.xcdatamodel */;
+			path = Favorites.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = BBF0A1AD2323F0BC00552AF2 /* Project object */;
 }

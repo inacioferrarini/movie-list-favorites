@@ -14,8 +14,19 @@ public class FavoritesCoordinator: Coordinator {
         self.appContext = appContext
     }
     
-    // MARK: - Lazy Properties
+    deinit {
+        try? self.coreDataStack.saveContext()
+    }
     
+    // MARK: - Lazy Properties
+  
+    lazy var coreDataStack: CoreDataStack = {
+        let modelFileName = "Favorites"
+        let databaseFileName = "FavoritesDB"
+        let bundle = Bundle(for: type(of: self))
+        return CoreDataStack(modelFileName: modelFileName, databaseFileName: databaseFileName, bundle: bundle)
+    }()
+
     lazy var tabBarItem: UITabBarItem? = {
         return UITabBarItem(title: tabBarItemTitle,
                             image: Assets.Icons.Modules.favorite,
