@@ -2,14 +2,16 @@ import Common
 
 public class FavoritesCoordinator: Coordinator {
     
-    // MARK: - Properties
+    // MARK: - Private Properties
     
     private var tabBar: UITabBarController
+    private var appContext: AppContext
     
     // MARK: - Initialization
     
-    public init(tabBar: UITabBarController) {
+    public init(tabBar: UITabBarController, appContext: AppContext) {
         self.tabBar = tabBar
+        self.appContext = appContext
     }
     
     // MARK: - Lazy Properties
