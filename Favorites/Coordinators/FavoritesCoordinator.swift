@@ -46,7 +46,6 @@ public class FavoritesCoordinator: Coordinator {
     
     public func start() {
         self.loadFavorites()
-        
         var viewControllers = tabBar.viewControllers ?? []
         viewControllers += [self.viewController]
         tabBar.viewControllers = viewControllers
@@ -55,14 +54,12 @@ public class FavoritesCoordinator: Coordinator {
     public func finish() {
         if let managedObjectContext = self.coreDataStack.managedObjectContext,
             let favoriteIds: FavoriteMoviesIdsTypes = appContext.get(key: FavoriteMoviesIdsKey) {
+            Favorite.removeAll(in: managedObjectContext)
             for id in favoriteIds {
                 _ = Favorite.favorite(with: id, in: managedObjectContext)
             }
         }
-        
         try? self.coreDataStack.saveContext()
-
-        print(" -- Favorite Coordinator FINISH -- ")
     }
     
     private func loadFavorites() {
