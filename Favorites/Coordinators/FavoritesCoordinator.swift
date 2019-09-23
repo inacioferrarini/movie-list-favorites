@@ -38,7 +38,6 @@ public class FavoritesCoordinator: Coordinator {
         if let tabBarItem = self.tabBarItem {
             vc.tabBarItem = tabBarItem
         }
-        vc.title = tabBarItemTitle     // HERE -- Move to ViewController
         return UINavigationController(rootViewController: vc)
     }()
 
