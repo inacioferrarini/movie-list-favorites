@@ -2,13 +2,13 @@ import Common
 
 public class FavoritesCoordinator: Coordinator {
     
-    
+
     // MARK: - Private Properties
     
     private var tabBar: UITabBarController
     private var appContext: AppContext
     
-    
+
     // MARK: - Initialization
     
     public init(tabBar: UITabBarController, appContext: AppContext) {
@@ -16,11 +16,7 @@ public class FavoritesCoordinator: Coordinator {
         self.appContext = appContext
     }
     
-    deinit {
-        try? self.coreDataStack.saveContext()
-    }
-    
-    
+
     // MARK: - Lazy Properties
   
     lazy var coreDataStack: CoreDataStack = {
@@ -45,14 +41,37 @@ public class FavoritesCoordinator: Coordinator {
         vc.title = tabBarItemTitle     // HERE -- Move to ViewController
         return UINavigationController(rootViewController: vc)
     }()
-    
-    
+
     // MARK: - Public Methods
     
     public func start() {
+        self.loadFavorites()
+        
         var viewControllers = tabBar.viewControllers ?? []
         viewControllers += [self.viewController]
         tabBar.viewControllers = viewControllers
+    }
+    
+    public func finish() {
+        if let managedObjectContext = self.coreDataStack.managedObjectContext,
+            let favoriteIds: FavoriteMoviesIdsTypes = appContext.get(key: FavoriteMoviesIdsKey) {
+            for id in favoriteIds {
+                _ = Favorite.favorite(with: id, in: managedObjectContext)
+            }
+        }
+        
+        try? self.coreDataStack.saveContext()
+
+        print(" -- Favorite Coordinator FINISH -- ")
+    }
+    
+    private func loadFavorites() {
+        var favoriteIds: [Int] = []
+        if let managedObjectContext = self.coreDataStack.managedObjectContext,
+            let favorites = Favorite.all(in: managedObjectContext) {
+            favoriteIds = favorites.compactMap({ return Int($0.movieId) })
+        }
+        appContext.set(value: favoriteIds, for: FavoriteMoviesIdsKey)
     }
     
 }

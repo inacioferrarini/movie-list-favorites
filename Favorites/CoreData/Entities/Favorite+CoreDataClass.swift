@@ -4,8 +4,12 @@ import CoreData
 @objc(Favorite)
 public class Favorite: NSManagedObject {
     
+    public class func all(in context: NSManagedObjectContext) -> [Favorite]? {
+        return self.allObjects(from: self.fetchRequest(), in: context)
+    }
+    
     public class func fetch(by movieId: Int, in context: NSManagedObjectContext) -> Favorite? {
-        let request: NSFetchRequest = NSFetchRequest<Favorite>(entityName: self.simpleClassName())
+        let request: NSFetchRequest = self.fetchRequest()
         request.predicate = NSPredicate(format: "movieId = %@", movieId)
         return self.lastObject(from: request, in: context)
     }
