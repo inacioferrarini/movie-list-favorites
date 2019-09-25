@@ -1,4 +1,5 @@
 import Common
+import Flow
 
 public class FavoritesCoordinator: Coordinator {
     
