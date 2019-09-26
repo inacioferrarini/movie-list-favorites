@@ -24,22 +24,23 @@
 import Foundation
 import Common
 import Flow
+import Ness
 
 ///
 /// Favorites `Module`
 ///
 public class FavoritesModule: Module {
-    
+
     private var tabBar: UITabBarController
     private var appContext: AppContext
-    
+
     ///
     /// Module `Coordinator`
     ///
     public lazy var coordinator: Coordinator = {
         return FavoritesCoordinator(tabBar: self.tabBar, appContext: appContext)
     }()
-    
+
     ///
     /// Initializes the Modules
     /// - Parameter tabBar: `UITabBar` to be used by the module.
@@ -49,5 +50,5 @@ public class FavoritesModule: Module {
         self.tabBar = tabBar
         self.appContext = appContext
     }
-    
+
 }

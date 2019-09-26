@@ -14,6 +14,13 @@
 		BB699749233B044600EBA6B3 /* Flow.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB699746233B044600EBA6B3 /* Flow.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BB69974A233B044600EBA6B3 /* Ness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB699747233B044600EBA6B3 /* Ness.framework */; };
 		BB69974B233B044600EBA6B3 /* Ness.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB699747233B044600EBA6B3 /* Ness.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BBBC155D233D67D200467BD4 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBBC155C233D67D200467BD4 /* SVProgressHUD.framework */; };
+		BBBC155E233D67D200467BD4 /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BBBC155C233D67D200467BD4 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BBBC1561233D680800467BD4 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBBC155F233D680700467BD4 /* Quick.framework */; };
+		BBBC1562233D680800467BD4 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBBC1560233D680700467BD4 /* Nimble.framework */; };
+		BBBC1564233D684000467BD4 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBBC1560233D680700467BD4 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BBBC1565233D684000467BD4 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBBC155F233D680700467BD4 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BBBC1566233D684000467BD4 /* SVProgressHUD.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBBC155C233D67D200467BD4 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BBD5097623383206009CA4EE /* Favorites.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BBD5097423383206009CA4EE /* Favorites.xcdatamodeld */; };
 		BBD50979233832F5009CA4EE /* Favorite+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD50977233832F5009CA4EE /* Favorite+CoreDataClass.swift */; };
 		BBD5097A233832F5009CA4EE /* Favorite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD50978233832F5009CA4EE /* Favorite+CoreDataProperties.swift */; };
@@ -41,10 +48,23 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				BBBC155E233D67D200467BD4 /* SVProgressHUD.framework in Embed Frameworks */,
 				BB699749233B044600EBA6B3 /* Flow.framework in Embed Frameworks */,
 				BB69974B233B044600EBA6B3 /* Ness.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BBBC1563233D681900467BD4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BBBC1564233D684000467BD4 /* Nimble.framework in CopyFiles */,
+				BBBC1565233D684000467BD4 /* Quick.framework in CopyFiles */,
+				BBBC1566233D684000467BD4 /* SVProgressHUD.framework in CopyFiles */,
+			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -56,6 +76,9 @@
 		BB6191EC232413BA007E4C48 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
 		BB699746233B044600EBA6B3 /* Flow.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Flow.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB699747233B044600EBA6B3 /* Ness.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Ness.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBBC155C233D67D200467BD4 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
+		BBBC155F233D680700467BD4 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
+		BBBC1560233D680700467BD4 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		BBD5097523383206009CA4EE /* Favorites.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Favorites.xcdatamodel; sourceTree = "<group>"; };
 		BBD50977233832F5009CA4EE /* Favorite+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorite+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BBD50978233832F5009CA4EE /* Favorite+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorite+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -77,6 +100,7 @@
 			files = (
 				BB69974A233B044600EBA6B3 /* Ness.framework in Frameworks */,
 				BB699748233B044600EBA6B3 /* Flow.framework in Frameworks */,
+				BBBC155D233D67D200467BD4 /* SVProgressHUD.framework in Frameworks */,
 				BBE77CBA2323FDB400A0C872 /* Common.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,6 +109,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBBC1561233D680800467BD4 /* Quick.framework in Frameworks */,
+				BBBC1562233D680800467BD4 /* Nimble.framework in Frameworks */,
 				BBF0A1C02323F0BC00552AF2 /* Favorites.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,6 +205,9 @@
 		BBF0A22A2323F5A500552AF2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BBBC1560233D680700467BD4 /* Nimble.framework */,
+				BBBC155F233D680700467BD4 /* Quick.framework */,
+				BBBC155C233D67D200467BD4 /* SVProgressHUD.framework */,
 				BB699746233B044600EBA6B3 /* Flow.framework */,
 				BB699747233B044600EBA6B3 /* Ness.framework */,
 				BBE77CB92323FDB400A0C872 /* Common.framework */,
@@ -228,6 +257,7 @@
 				BBF0A1BB2323F0BC00552AF2 /* Sources */,
 				BBF0A1BC2323F0BC00552AF2 /* Frameworks */,
 				BBF0A1BD2323F0BC00552AF2 /* Resources */,
+				BBBC1563233D681900467BD4 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -497,6 +527,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Favorites/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -524,6 +558,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Favorites/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -545,6 +583,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TS43775FV9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FavoritesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -564,6 +606,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TS43775FV9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = FavoritesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

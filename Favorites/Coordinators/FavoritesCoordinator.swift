@@ -1,25 +1,26 @@
 import Common
 import Flow
+import Ness
 
 public class FavoritesCoordinator: Coordinator {
-    
+
 
     // MARK: - Private Properties
-    
+
     private var tabBar: UITabBarController
     private var appContext: AppContext
-    
+
 
     // MARK: - Initialization
-    
+
     public init(tabBar: UITabBarController, appContext: AppContext) {
         self.tabBar = tabBar
         self.appContext = appContext
     }
-    
+
 
     // MARK: - Lazy Properties
-  
+
     lazy var coreDataStack: CoreDataStack = {
         let modelFileName = "Favorites"
         let databaseFileName = "FavoritesDB"
@@ -32,7 +33,7 @@ public class FavoritesCoordinator: Coordinator {
                             image: Assets.Icons.Modules.favorite,
                             selectedImage: nil)
     }()
-    
+
     public lazy var viewController: UIViewController = {
         let vc = UIViewController()
         vc.view.backgroundColor = UIColor.red
@@ -43,14 +44,14 @@ public class FavoritesCoordinator: Coordinator {
     }()
 
     // MARK: - Public Methods
-    
+
     public func start() {
         self.loadFavorites()
         var viewControllers = tabBar.viewControllers ?? []
         viewControllers += [self.viewController]
         tabBar.viewControllers = viewControllers
     }
-    
+
     public func finish() {
         if let managedObjectContext = self.coreDataStack.managedObjectContext,
             let favoriteIds: FavoriteMoviesIdsTypes = appContext.get(key: FavoriteMoviesIdsKey) {
@@ -61,7 +62,7 @@ public class FavoritesCoordinator: Coordinator {
         }
         try? self.coreDataStack.saveContext()
     }
-    
+
     private func loadFavorites() {
         var favoriteIds: [Int] = []
         if let managedObjectContext = self.coreDataStack.managedObjectContext,
@@ -70,13 +71,13 @@ public class FavoritesCoordinator: Coordinator {
         }
         appContext.set(value: favoriteIds, for: FavoriteMoviesIdsKey)
     }
-    
+
 }
 
 extension FavoritesCoordinator: Internationalizable {
-    
+
     var tabBarItemTitle: String {
         return string("tabBarItemTitle", languageCode: "en-US")
     }
-    
+
 }
