@@ -27,7 +27,6 @@
 		BBD5097C233841F3009CA4EE /* FavoriteSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD5097B233841F3009CA4EE /* FavoriteSymbols.swift */; };
 		BBE77CBA2323FDB400A0C872 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE77CB92323FDB400A0C872 /* Common.framework */; };
 		BBF0A1C02323F0BC00552AF2 /* Favorites.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF0A1B62323F0BC00552AF2 /* Favorites.framework */; };
-		BBF0A1C52323F0BC00552AF2 /* FavoritesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0A1C42323F0BC00552AF2 /* FavoritesTests.swift */; };
 		BBF0A1C72323F0BC00552AF2 /* Favorites.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF0A1B92323F0BC00552AF2 /* Favorites.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -88,7 +87,6 @@
 		BBF0A1B92323F0BC00552AF2 /* Favorites.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Favorites.h; sourceTree = "<group>"; };
 		BBF0A1BA2323F0BC00552AF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBF0A1BF2323F0BC00552AF2 /* FavoritesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FavoritesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BBF0A1C42323F0BC00552AF2 /* FavoritesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTests.swift; sourceTree = "<group>"; };
 		BBF0A1C62323F0BC00552AF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BBF0A22B2323F5A500552AF2 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -196,7 +194,6 @@
 		BBF0A1C32323F0BC00552AF2 /* FavoritesTests */ = {
 			isa = PBXGroup;
 			children = (
-				BBF0A1C42323F0BC00552AF2 /* FavoritesTests.swift */,
 				BBF0A1C62323F0BC00552AF2 /* Info.plist */,
 			);
 			path = FavoritesTests;
@@ -365,7 +362,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBF0A1C52323F0BC00552AF2 /* FavoritesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
