@@ -22,18 +22,33 @@
 //
 
 import Foundation
-import CoreData
+import Common
+import Flow
+import Ness
 
-extension Favorite {
+///
+/// Favorites `Module`
+///
+public class FavoriteMoviesModule: Module {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Favorite> {
-        return NSFetchRequest<Favorite>(entityName: "Favorite")
+    private var tabBar: UITabBarController
+    private var appContext: AppContext
+
+    ///
+    /// Module `Coordinator`
+    ///
+    public lazy var coordinator: Coordinator = {
+        return FavoriteMoviesCoordinator(tabBar: self.tabBar, appContext: appContext)
+    }()
+
+    ///
+    /// Initializes the Modules
+    /// - Parameter tabBar: `UITabBar` to be used by the module.
+    /// - Parameter appContext: `AppContext` used by the App.
+    ///
+    public init(tabBar: UITabBarController, appContext: AppContext) {
+        self.tabBar = tabBar
+        self.appContext = appContext
     }
-
-    @NSManaged public var movieId: Int32
-    @NSManaged public var title: String?
-    @NSManaged public var year: Int32
-    @NSManaged public var overview: String?
-    @NSManaged public var posterPath: String?
 
 }

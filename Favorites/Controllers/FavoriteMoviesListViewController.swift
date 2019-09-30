@@ -21,34 +21,30 @@
 //    SOFTWARE.
 //
 
-import Foundation
 import Common
 import Flow
 import Ness
 
-///
-/// Favorites `Module`
-///
-public class FavoritesModule: Module {
+class FavoriteMoviesListViewController: UIViewController, Storyboarded {
 
-    private var tabBar: UITabBarController
-    private var appContext: AppContext
+    // MARK: - Outlets
 
-    ///
-    /// Module `Coordinator`
-    ///
-    public lazy var coordinator: Coordinator = {
-        return FavoritesCoordinator(tabBar: self.tabBar, appContext: appContext)
-    }()
+    @IBOutlet weak private(set) var favoriteMoviesListView: FavoriteMoviesListView!
 
-    ///
-    /// Initializes the Modules
-    /// - Parameter tabBar: `UITabBar` to be used by the module.
-    /// - Parameter appContext: `AppContext` used by the App.
-    ///
-    public init(tabBar: UITabBarController, appContext: AppContext) {
-        self.tabBar = tabBar
-        self.appContext = appContext
+    // MARK: - Properties
+
+    // MARK: - Lifecycle
+
+    let searchBarController = UISearchController(searchResultsController: nil)
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.setup()
+    }
+
+    private func setup() {
+        self.title = "TITLE" // viewControllerTitle
+//        self.movieCatalogView.delegate = self
     }
 
 }

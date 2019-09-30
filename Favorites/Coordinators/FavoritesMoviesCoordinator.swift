@@ -25,7 +25,7 @@ import Common
 import Flow
 import Ness
 
-public class FavoritesCoordinator: Coordinator {
+public class FavoriteMoviesCoordinator: Coordinator {
 
     // MARK: - Private Properties
 
@@ -42,8 +42,8 @@ public class FavoritesCoordinator: Coordinator {
     // MARK: - Lazy Properties
 
     lazy var coreDataStack: CoreDataStack = {
-        let modelFileName = "Favorites"
-        let databaseFileName = "FavoritesDB"
+        let modelFileName = "FavoritesMovies"
+        let databaseFileName = "FavoritesMoviesDB"
         let bundle = Bundle(for: type(of: self))
         return CoreDataStack(modelFileName: modelFileName, databaseFileName: databaseFileName, bundle: bundle)
     }()
@@ -55,12 +55,18 @@ public class FavoritesCoordinator: Coordinator {
     }()
 
     public lazy var viewController: UIViewController = {
-        let vc = UIViewController()
-        vc.view.backgroundColor = UIColor.red
+        guard let vc = favoriteMoviesViewController else { return UIViewController() }
         if let tabBarItem = self.tabBarItem {
             vc.tabBarItem = tabBarItem
         }
         return UINavigationController(rootViewController: vc)
+    }()
+
+    private lazy var favoriteMoviesViewController: FavoriteMoviesListViewController? = {
+        let vc = FavoriteMoviesListViewController.instantiate(from: "Favorites")
+//        vc?.delegate = self
+//        vc?.appContext = self.appContext
+        return vc
     }()
 
     // MARK: - Public Methods
@@ -77,7 +83,8 @@ public class FavoritesCoordinator: Coordinator {
             let favoriteIds: FavoriteMoviesIdsTypes = appContext.get(key: FavoriteMoviesIdsKey) {
             Favorite.removeAll(in: managedObjectContext)
             for id in favoriteIds {
-                _ = Favorite.favorite(with: id, in: managedObjectContext)
+                // FIX: Store favorites here
+//                _ = Favorite.favorite(with: id, in: managedObjectContext)
             }
         }
         try? self.coreDataStack.saveContext()
@@ -94,7 +101,7 @@ public class FavoritesCoordinator: Coordinator {
 
 }
 
-extension FavoritesCoordinator: Internationalizable {
+extension FavoriteMoviesCoordinator: Internationalizable {
 
     var tabBarItemTitle: String {
         return string("tabBarItemTitle", languageCode: "en-US")

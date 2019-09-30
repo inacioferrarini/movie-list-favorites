@@ -45,6 +45,10 @@ public class Favorite: NSManagedObject {
     }
 
     public class func favorite(with movieId: Int,
+                               title: String,
+                               year: Int,
+                               overview: String,
+                               posterPath: String,
                                in context: NSManagedObjectContext) -> Favorite? {
         let favorite = self.fetch(by: movieId, in: context)
         guard favorite == nil else { return favorite }
@@ -52,6 +56,10 @@ public class Favorite: NSManagedObject {
         guard let newFavorite = NSEntityDescription.insertNewObject(forEntityName: self.simpleClassName(), into: context) as? Favorite else { return nil }
 
         newFavorite.movieId = Int32(movieId)
+        newFavorite.title = title
+        newFavorite.year = Int32(year)
+        newFavorite.overview = overview
+        newFavorite.posterPath = posterPath
 
         return newFavorite
     }

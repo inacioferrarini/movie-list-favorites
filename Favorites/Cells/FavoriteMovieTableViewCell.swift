@@ -21,19 +21,20 @@
 //    SOFTWARE.
 //
 
-import Foundation
-import CoreData
+import UIKit
+import Common
+import Ness
 
-extension Favorite {
+///
+/// Cell used to display a favorite movie
+///
+class FavoriteMovieTableViewCell: UITableViewCell, Configurable {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Favorite> {
-        return NSFetchRequest<Favorite>(entityName: "Favorite")
+    // MARK: - Outlets
+
+    // MARK: - Setup
+
+    func setup(with value: Favorite) {
     }
-
-    @NSManaged public var movieId: Int32
-    @NSManaged public var title: String?
-    @NSManaged public var year: Int32
-    @NSManaged public var overview: String?
-    @NSManaged public var posterPath: String?
 
 }
