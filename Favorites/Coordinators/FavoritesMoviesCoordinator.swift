@@ -65,7 +65,7 @@ public class FavoriteMoviesCoordinator: Coordinator {
     private lazy var favoriteMoviesViewController: FavoriteMoviesListViewController? = {
         let vc = FavoriteMoviesListViewController.instantiate(from: "Favorites")
 //        vc?.delegate = self
-//        vc?.appContext = self.appContext
+        vc?.appContext = self.appContext
         return vc
     }()
 

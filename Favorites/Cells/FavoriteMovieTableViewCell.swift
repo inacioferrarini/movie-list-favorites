@@ -34,7 +34,8 @@ class FavoriteMovieTableViewCell: UITableViewCell, Configurable {
 
     // MARK: - Setup
 
-    func setup(with value: Favorite) {
+    func setup(with value: Movie) {
+        print("FavoriteMovieTableViewCell: \(value)")
     }
 
 }

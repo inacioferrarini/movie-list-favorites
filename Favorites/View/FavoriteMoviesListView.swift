@@ -34,10 +34,19 @@ class FavoriteMoviesListView: UIView {
 
     // MARK: - Private Properties
 
-    private var dataProvider = ArrayDataProvider<Favorite>(section: [])
-    private var tableViewDataSource: TableViewArrayDataSource<FavoriteMovieTableViewCell, Favorite>?
+    private var dataProvider = ArrayDataProvider<Movie>(section: [])
+    private var tableViewDataSource: TableViewArrayDataSource<FavoriteMovieTableViewCell, Movie>?
 
     // MARK: - Properties
+
+    var favoriteMovies: [Movie]? {
+        didSet {
+            if let favoriteMovies = favoriteMovies {
+                dataProvider.elements = [favoriteMovies]
+                tableViewDataSource?.refresh()
+            }
+        }
+    }
 
     // MARK: - Initialization
 
@@ -68,7 +77,6 @@ class FavoriteMoviesListView: UIView {
     }
 
     private func commonInit() {
-        print("####### FavoritesMovieListView common init #########")
         let bundle = Bundle(for: type(of: self))
         let className = String(describing: type(of: self))
         bundle.loadNibNamed(className, owner: self, options: nil)
@@ -81,7 +89,7 @@ class FavoriteMoviesListView: UIView {
     private func setupTableView() {
         let nib = UINib(nibName: FavoriteMovieTableViewCell.simpleClassName(), bundle: Bundle(for: type(of: self)))
         tableView.register(nib, forCellReuseIdentifier: FavoriteMovieTableViewCell.simpleClassName())
-        let dataSource = TableViewArrayDataSource<FavoriteMovieTableViewCell, Favorite>(for: tableView, with: dataProvider)
+        let dataSource = TableViewArrayDataSource<FavoriteMovieTableViewCell, Movie>(for: tableView, with: dataProvider)
         tableView.dataSource = dataSource
         self.tableViewDataSource = dataSource
         tableView.delegate = self

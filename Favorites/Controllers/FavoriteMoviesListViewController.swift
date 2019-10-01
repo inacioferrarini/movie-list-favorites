@@ -33,18 +33,69 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded {
 
     // MARK: - Properties
 
-    // MARK: - Lifecycle
-
+    weak var appContext: AppContext?
     let searchBarController = UISearchController(searchResultsController: nil)
+
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        favoriteMoviesListView.favoriteMovies = appContext?.get(key: FavoriteMoviesKey)
+    }
+
     private func setup() {
-        self.title = "TITLE" // viewControllerTitle
+        self.title = viewControllerTitle
 //        self.movieCatalogView.delegate = self
+        self.setupSearchField()
+    }
+
+    private func setupSearchField() {
+        self.navigationItem.searchController = searchBarController
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+        
+        self.searchBarController.searchBar.barTintColor = Assets.Colors.NavigationBar.backgroundColor
+        self.searchBarController.searchBar.setTextBackground(Assets.Colors.NavigationBar.textBackgroundColor)
+        self.searchBarController.searchBar.showsCancelButton = false
+        self.searchBarController.searchBar.showsSearchResultsButton = false
+        self.searchBarController.searchBar.delegate = self
+        self.searchBarController.searchBar.placeholder = searchPlaceholder
+    }
+
+}
+
+extension FavoriteMoviesListViewController: Internationalizable {
+    
+    var viewControllerTitle: String {
+        return string("title", languageCode: "en-US")
+    }
+
+    var searchPlaceholder: String {
+        return string("searchPlaceholder", languageCode: "en-US")
+    }
+
+}
+
+extension FavoriteMoviesListViewController: UISearchBarDelegate {
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("Searchbar ... text: \(searchText)")
+        //
+        //        filtered = data.filter({ (text) -> Bool in
+        //            let tmp: NSString = text
+        //            let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+        //            return range.location != NSNotFound
+        //        })
+        //        if(filtered.count == 0){
+        //            searchActive = false;
+        //        } else {
+        //            searchActive = true;
+        //        }
+        //        self.tableView.reloadData()
     }
 
 }
