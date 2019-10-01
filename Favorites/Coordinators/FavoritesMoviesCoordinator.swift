@@ -80,16 +80,10 @@ public class FavoriteMoviesCoordinator: Coordinator {
 
     public func finish() {
         if let managedObjectContext = self.coreDataStack.managedObjectContext,
-            let favorites: FavoriteMoviesType = appContext.get(key: FavoriteMoviesKey) {
+            let favorites = appContext.allFavorites() {
             Favorite.removeAll(in: managedObjectContext)
             for movie in favorites {
-                guard let movieId = movie.id else { continue }
-                _ = Favorite.favorite(movieId: movieId,
-                                      title: movie.title,
-                                      year: movie.releaseDate?.toDate()?.year,
-                                      overview: movie.overview,
-                                      posterPath: movie.posterPath,
-                                      in: managedObjectContext)
+                _ = Favorite.favorite(movie: movie, in: managedObjectContext)
             }
         }
         try? self.coreDataStack.saveContext()
@@ -99,18 +93,9 @@ public class FavoriteMoviesCoordinator: Coordinator {
         var favoriteMovies: FavoriteMoviesType = []
         if let managedObjectContext = self.coreDataStack.managedObjectContext,
             let favorites = Favorite.all(in: managedObjectContext) {
-            favoriteMovies = favorites.compactMap({ favorite -> Movie in
-                var movie = Movie()
-                movie.id = Int(favorite.movieId)
-                movie.overview = favorite.overview
-                movie.posterPath = favorite.posterPath
-                movie.title = favorite.title
-                movie.releaseDate = "01/01/\(favorite.year)"
-                movie.isFavorite = true
-                return movie
-            })
+            favoriteMovies = favorites.compactMap({ return Movie(favorite: $0) })
         }
-        appContext.set(value: favoriteMovies, for: FavoriteMoviesKey)
+        appContext.add(favorites: favoriteMovies)
     }
 
 }

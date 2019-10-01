@@ -45,7 +45,7 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        favoriteMoviesListView.favoriteMovies = appContext?.get(key: FavoriteMoviesKey)
+        favoriteMoviesListView.favoriteMovies = appContext?.allFavorites()
     }
 
     private func setup() {
