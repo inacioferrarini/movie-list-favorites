@@ -29,7 +29,7 @@
 		BBBC1564233D684000467BD4 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBBC1560233D680700467BD4 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BBBC1565233D684000467BD4 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBBC155F233D680700467BD4 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BBBC1566233D684000467BD4 /* SVProgressHUD.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBBC155C233D67D200467BD4 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BBD5097623383206009CA4EE /* Favorites.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BBD5097423383206009CA4EE /* Favorites.xcdatamodeld */; };
+		BBD5097623383206009CA4EE /* FavoriteMovies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BBD5097423383206009CA4EE /* FavoriteMovies.xcdatamodeld */; };
 		BBE77CBA2323FDB400A0C872 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE77CB92323FDB400A0C872 /* Common.framework */; };
 		BBF0A1C02323F0BC00552AF2 /* Favorites.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF0A1B62323F0BC00552AF2 /* Favorites.framework */; };
 		BBF0A1C72323F0BC00552AF2 /* Favorites.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF0A1B92323F0BC00552AF2 /* Favorites.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -189,7 +189,7 @@
 		BBD50973233831F1009CA4EE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				BBD5097423383206009CA4EE /* Favorites.xcdatamodeld */,
+				BBD5097423383206009CA4EE /* FavoriteMovies.xcdatamodeld */,
 				BB082CF42342C22100DCE7E1 /* Favorites.storyboard */,
 			);
 			path = Resources;
@@ -391,7 +391,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBD5097623383206009CA4EE /* Favorites.xcdatamodeld in Sources */,
+				BBD5097623383206009CA4EE /* FavoriteMovies.xcdatamodeld in Sources */,
 				BB6191ED232413BA007E4C48 /* FavoritesMoviesCoordinator.swift in Sources */,
 				BB1C1DC72342B3580092265D /* Favorite+CoreDataClass.swift in Sources */,
 				BB1C1DCF2342B8330092265D /* FavoriteMoviesListView.swift in Sources */,
@@ -698,13 +698,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		BBD5097423383206009CA4EE /* Favorites.xcdatamodeld */ = {
+		BBD5097423383206009CA4EE /* FavoriteMovies.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				BBD5097523383206009CA4EE /* Favorites.xcdatamodel */,
 			);
 			currentVersion = BBD5097523383206009CA4EE /* Favorites.xcdatamodel */;
-			path = Favorites.xcdatamodeld;
+			path = FavoriteMovies.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -44,11 +44,11 @@ public class Favorite: NSManagedObject {
         return self.lastObject(from: request, in: context)
     }
 
-    public class func favorite(with movieId: Int,
-                               title: String,
-                               year: Int,
-                               overview: String,
-                               posterPath: String,
+    public class func favorite(movieId: Int,
+                               title: String?,
+                               year: Int?,
+                               overview: String?,
+                               posterPath: String?,
                                in context: NSManagedObjectContext) -> Favorite? {
         let favorite = self.fetch(by: movieId, in: context)
         guard favorite == nil else { return favorite }
@@ -57,7 +57,7 @@ public class Favorite: NSManagedObject {
 
         newFavorite.movieId = Int32(movieId)
         newFavorite.title = title
-        newFavorite.year = Int32(year)
+        newFavorite.year = Int32(year ?? 0)
         newFavorite.overview = overview
         newFavorite.posterPath = posterPath
 

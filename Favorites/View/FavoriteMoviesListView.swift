@@ -36,7 +36,6 @@ class FavoriteMoviesListView: UIView {
 
     private var dataProvider = ArrayDataProvider<Favorite>(section: [])
     private var tableViewDataSource: TableViewArrayDataSource<FavoriteMovieTableViewCell, Favorite>?
-//    private var tableViewDelegate: TableViewBlockDelegate<FavoriteMovieTableViewCell, Favorite>?
 
     // MARK: - Properties
 

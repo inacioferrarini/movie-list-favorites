@@ -42,8 +42,8 @@ public class FavoriteMoviesCoordinator: Coordinator {
     // MARK: - Lazy Properties
 
     lazy var coreDataStack: CoreDataStack = {
-        let modelFileName = "FavoritesMovies"
-        let databaseFileName = "FavoritesMoviesDB"
+        let modelFileName = "FavoriteMovies"
+        let databaseFileName = "FavoriteMoviesDB"
         let bundle = Bundle(for: type(of: self))
         return CoreDataStack(modelFileName: modelFileName, databaseFileName: databaseFileName, bundle: bundle)
     }()
@@ -80,23 +80,37 @@ public class FavoriteMoviesCoordinator: Coordinator {
 
     public func finish() {
         if let managedObjectContext = self.coreDataStack.managedObjectContext,
-            let favoriteIds: FavoriteMoviesIdsTypes = appContext.get(key: FavoriteMoviesIdsKey) {
+            let favorites: FavoriteMoviesType = appContext.get(key: FavoriteMoviesKey) {
             Favorite.removeAll(in: managedObjectContext)
-            for id in favoriteIds {
-                // FIX: Store favorites here
-//                _ = Favorite.favorite(with: id, in: managedObjectContext)
+            for movie in favorites {
+                guard let movieId = movie.id else { continue }
+                _ = Favorite.favorite(movieId: movieId,
+                                      title: movie.title,
+                                      year: movie.releaseDate?.toDate()?.year,
+                                      overview: movie.overview,
+                                      posterPath: movie.posterPath,
+                                      in: managedObjectContext)
             }
         }
         try? self.coreDataStack.saveContext()
     }
 
     private func loadFavorites() {
-        var favoriteIds: [Int] = []
+        var favoriteMovies: FavoriteMoviesType = []
         if let managedObjectContext = self.coreDataStack.managedObjectContext,
             let favorites = Favorite.all(in: managedObjectContext) {
-            favoriteIds = favorites.compactMap({ return Int($0.movieId) })
+            favoriteMovies = favorites.compactMap({ favorite -> Movie in
+                var movie = Movie()
+                movie.id = Int(favorite.movieId)
+                movie.overview = favorite.overview
+                movie.posterPath = favorite.posterPath
+                movie.title = favorite.title
+                movie.releaseDate = "01/01/\(favorite.year)"
+                movie.isFavorite = true
+                return movie
+            })
         }
-        appContext.set(value: favoriteIds, for: FavoriteMoviesIdsKey)
+        appContext.set(value: favoriteMovies, for: FavoriteMoviesKey)
     }
 
 }
