@@ -23,6 +23,7 @@
 
 import Foundation
 import CoreData
+import Common
 
 @objc(Favorite)
 public class Favorite: NSManagedObject {
@@ -44,6 +45,17 @@ public class Favorite: NSManagedObject {
         return self.lastObject(from: request, in: context)
     }
 
+    public class func favorite(movie: Movie,
+                               in context: NSManagedObjectContext) -> Favorite? {
+        guard let movieId = movie.id else { return nil }
+        return self.favorite(movieId: movieId,
+                             title: movie.title,
+                             year: movie.releaseDate?.toDate()?.year,
+                             overview: movie.overview,
+                             posterPath: movie.posterPath,
+                             in: context)
+    }
+    
     public class func favorite(movieId: Int,
                                title: String?,
                                year: Int?,
