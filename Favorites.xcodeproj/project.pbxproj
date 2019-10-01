@@ -30,7 +30,6 @@
 		BBBC1565233D684000467BD4 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBBC155F233D680700467BD4 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BBBC1566233D684000467BD4 /* SVProgressHUD.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBBC155C233D67D200467BD4 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BBD5097623383206009CA4EE /* Favorites.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BBD5097423383206009CA4EE /* Favorites.xcdatamodeld */; };
-		BBD5097C233841F3009CA4EE /* FavoriteSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD5097B233841F3009CA4EE /* FavoriteSymbols.swift */; };
 		BBE77CBA2323FDB400A0C872 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE77CB92323FDB400A0C872 /* Common.framework */; };
 		BBF0A1C02323F0BC00552AF2 /* Favorites.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF0A1B62323F0BC00552AF2 /* Favorites.framework */; };
 		BBF0A1C72323F0BC00552AF2 /* Favorites.h in Headers */ = {isa = PBXBuildFile; fileRef = BBF0A1B92323F0BC00552AF2 /* Favorites.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -93,7 +92,6 @@
 		BBBC155F233D680700467BD4 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		BBBC1560233D680700467BD4 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		BBD5097523383206009CA4EE /* Favorites.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Favorites.xcdatamodel; sourceTree = "<group>"; };
-		BBD5097B233841F3009CA4EE /* FavoriteSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteSymbols.swift; sourceTree = "<group>"; };
 		BBE77CB92323FDB400A0C872 /* Common.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Common.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF0A1B62323F0BC00552AF2 /* Favorites.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Favorites.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBF0A1B92323F0BC00552AF2 /* Favorites.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Favorites.h; sourceTree = "<group>"; };
@@ -200,7 +198,6 @@
 		BBF0A1AC2323F0BC00552AF2 = {
 			isa = PBXGroup;
 			children = (
-				BBD5097B233841F3009CA4EE /* FavoriteSymbols.swift */,
 				BBF0A1B82323F0BC00552AF2 /* Favorites */,
 				BBF0A1C32323F0BC00552AF2 /* FavoritesTests */,
 				BBF0A1B72323F0BC00552AF2 /* Products */,
@@ -402,7 +399,6 @@
 				BB6191E9232411E9007E4C48 /* FavoriteMoviesModule.swift in Sources */,
 				BB082CF72342C26C00DCE7E1 /* FavoriteMoviesListViewController.swift in Sources */,
 				BB1C1DC82342B3580092265D /* Favorite+CoreDataProperties.swift in Sources */,
-				BBD5097C233841F3009CA4EE /* FavoriteSymbols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
