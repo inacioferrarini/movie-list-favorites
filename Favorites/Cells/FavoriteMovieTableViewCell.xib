@@ -5,34 +5,86 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="FavoriteMovieTableViewCell" customModule="Favorites" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="115" id="KGk-i7-Jjw" customClass="FavoriteMovieTableViewCell" customModule="Favorites" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="115"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="114.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FavoriteMovie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JvO-us-1d1">
-                        <rect key="frame" x="16" y="11" width="288" height="22"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p58-ES-RPl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="114.5"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uZz-FV-e0B">
+                                <rect key="frame" x="0.0" y="0.0" width="91" height="115"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="91" id="ZHB-kc-p94"/>
+                                    <constraint firstAttribute="height" constant="115" id="hu0-Zc-pfc"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCp-hH-KmM">
+                                <rect key="frame" x="99" y="16" width="42" height="18"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7O-KP-yee">
+                                <rect key="frame" x="273.5" y="16" width="30.5" height="18"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zSO-Yn-Sxl">
+                                <rect key="frame" x="99" y="52" width="205" height="46.5"/>
+                                <string key="text">asdasdasdasdsdasdakjsdlkajdsklasjdklajsdalksdjaklsdjlkajdakljdsakl jlaksdjalksdjakl sjaklsdjaklsdjaklsdj lkasdjalksdjaklsdjaklsd</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="TabBarUnselectedTextColor"/>
+                        <constraints>
+                            <constraint firstItem="QCp-hH-KmM" firstAttribute="leading" secondItem="uZz-FV-e0B" secondAttribute="trailing" constant="8" id="25w-xF-Ftd"/>
+                            <constraint firstItem="b7O-KP-yee" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QCp-hH-KmM" secondAttribute="trailing" constant="16" id="7qa-wR-BZk"/>
+                            <constraint firstAttribute="bottom" secondItem="zSO-Yn-Sxl" secondAttribute="bottom" constant="16" id="SMT-DI-6Qk"/>
+                            <constraint firstItem="zSO-Yn-Sxl" firstAttribute="leading" secondItem="uZz-FV-e0B" secondAttribute="trailing" constant="8" id="UUq-AN-g2H"/>
+                            <constraint firstItem="uZz-FV-e0B" firstAttribute="top" secondItem="p58-ES-RPl" secondAttribute="top" id="V2p-pg-ukb"/>
+                            <constraint firstItem="zSO-Yn-Sxl" firstAttribute="top" relation="greaterThanOrEqual" secondItem="QCp-hH-KmM" secondAttribute="bottom" constant="16" id="Yfe-zv-FBS"/>
+                            <constraint firstItem="uZz-FV-e0B" firstAttribute="leading" secondItem="p58-ES-RPl" secondAttribute="leading" id="aCG-6U-XKP"/>
+                            <constraint firstAttribute="trailing" secondItem="zSO-Yn-Sxl" secondAttribute="trailing" constant="16" id="dnp-qm-puf"/>
+                            <constraint firstItem="b7O-KP-yee" firstAttribute="top" secondItem="p58-ES-RPl" secondAttribute="top" constant="16" id="osO-Bf-UJw"/>
+                            <constraint firstAttribute="trailing" secondItem="b7O-KP-yee" secondAttribute="trailing" constant="16" id="pvj-VF-Jp1"/>
+                            <constraint firstItem="QCp-hH-KmM" firstAttribute="top" secondItem="p58-ES-RPl" secondAttribute="top" constant="16" id="ty4-IT-4p2"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="JvO-us-1d1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="2uE-cb-deB"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="JvO-us-1d1" secondAttribute="trailing" id="Hzv-7m-Rav"/>
-                    <constraint firstItem="JvO-us-1d1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="QVh-O2-YO1"/>
-                    <constraint firstItem="JvO-us-1d1" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="U4t-Rj-ORN"/>
+                    <constraint firstItem="p58-ES-RPl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="J7e-di-gI4"/>
+                    <constraint firstItem="p58-ES-RPl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ZNo-gP-YWA"/>
+                    <constraint firstAttribute="trailing" secondItem="p58-ES-RPl" secondAttribute="trailing" id="hc3-Wj-6Qi"/>
+                    <constraint firstAttribute="bottom" secondItem="p58-ES-RPl" secondAttribute="bottom" id="oZt-so-UOh"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="overviewLabel" destination="zSO-Yn-Sxl" id="BUw-61-z5N"/>
+                <outlet property="posterImage" destination="uZz-FV-e0B" id="equ-yG-96N"/>
+                <outlet property="titleLabel" destination="QCp-hH-KmM" id="mpZ-zC-g7U"/>
+                <outlet property="yearLabel" destination="b7O-KP-yee" id="fQE-Ww-QYZ"/>
+            </connections>
+            <point key="canvasLocation" x="132.80000000000001" y="150.67466266866569"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="TabBarUnselectedTextColor">
+            <color red="0.45490196078431372" green="0.45490196078431372" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

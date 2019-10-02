@@ -37,7 +37,7 @@ public extension Movie {
         overview = favorite.overview
         posterPath = favorite.posterPath
         title = favorite.title
-        releaseDate = "01/01/\(favorite.year)"
+        releaseDate = "01/01/2008" // "01/01/\(favorite.year)"
         isFavorite = true
     }
 

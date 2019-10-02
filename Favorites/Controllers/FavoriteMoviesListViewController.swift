@@ -69,7 +69,7 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded {
 }
 
 extension FavoriteMoviesListViewController: Internationalizable {
-    
+
     var viewControllerTitle: String {
         return string("title", languageCode: "en-US")
     }

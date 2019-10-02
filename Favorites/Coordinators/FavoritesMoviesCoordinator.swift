@@ -79,8 +79,8 @@ public class FavoriteMoviesCoordinator: Coordinator {
     }
 
     public func finish() {
-        if let managedObjectContext = self.coreDataStack.managedObjectContext,
-            let favorites = appContext.allFavorites() {
+        if let managedObjectContext = self.coreDataStack.managedObjectContext {
+            let favorites = appContext.allFavorites()
             Favorite.removeAll(in: managedObjectContext)
             for movie in favorites {
                 _ = Favorite.favorite(movie: movie, in: managedObjectContext)

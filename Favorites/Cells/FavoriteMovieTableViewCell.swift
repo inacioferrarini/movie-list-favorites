@@ -32,10 +32,29 @@ class FavoriteMovieTableViewCell: UITableViewCell, Configurable {
 
     // MARK: - Outlets
 
+    @IBOutlet weak private(set) var posterImage: UIImageView!
+    @IBOutlet weak private(set) var titleLabel: UILabel!
+    @IBOutlet weak private(set) var yearLabel: UILabel!
+    @IBOutlet weak private(set) var overviewLabel: UILabel!
+
     // MARK: - Setup
 
     func setup(with value: Movie) {
-        print("FavoriteMovieTableViewCell: \(value)")
+        if let url = URL(string: "http://image.tmdb.org/t/p/w500//" + (value.posterPath ?? "")) {
+            UIImage.download(from: url) { [unowned self] (image, _) in
+                self.posterImage.image = image
+            }
+        }
+
+        titleLabel.text = value.title ?? ""
+
+        if let year = value.releaseDate?.toDate()?.year {
+            yearLabel.text = "\(year)"
+        } else {
+            yearLabel.text = "-"
+        }
+
+        overviewLabel.text = value.overview ?? ""
     }
 
 }
