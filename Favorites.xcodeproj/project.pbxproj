@@ -17,6 +17,7 @@
 		BB1C1DC82342B3580092265D /* Favorite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C1DC62342B3580092265D /* Favorite+CoreDataProperties.swift */; };
 		BB1C1DCD2342B8260092265D /* FavoriteMoviesListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB1C1DCC2342B8260092265D /* FavoriteMoviesListView.xib */; };
 		BB1C1DCF2342B8330092265D /* FavoriteMoviesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C1DCE2342B8330092265D /* FavoriteMoviesListView.swift */; };
+		BB1F18BE2346D5F400A70294 /* FavoriteMoviesListView.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB1F18C02346D5F400A70294 /* FavoriteMoviesListView.strings */; };
 		BB58BFE7232EBE1400A13142 /* FavoriteMoviesCoordinator.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB58BFE9232EBE1400A13142 /* FavoriteMoviesCoordinator.strings */; };
 		BB6191E9232411E9007E4C48 /* FavoriteMoviesModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6191E8232411E9007E4C48 /* FavoriteMoviesModule.swift */; };
 		BB6191ED232413BA007E4C48 /* FavoriteMoviesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6191EC232413BA007E4C48 /* FavoriteMoviesCoordinator.swift */; };
@@ -87,6 +88,8 @@
 		BB1C1DC62342B3580092265D /* Favorite+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorite+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BB1C1DCC2342B8260092265D /* FavoriteMoviesListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteMoviesListView.xib; sourceTree = "<group>"; };
 		BB1C1DCE2342B8330092265D /* FavoriteMoviesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMoviesListView.swift; sourceTree = "<group>"; };
+		BB1F18BF2346D5F400A70294 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/FavoriteMoviesListView.strings"; sourceTree = "<group>"; };
+		BB1F18C12346D5F600A70294 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/FavoriteMoviesListView.strings"; sourceTree = "<group>"; };
 		BB58BFEA232EBE3A00A13142 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/FavoriteMoviesCoordinator.strings"; sourceTree = "<group>"; };
 		BB58BFEB232EBE4100A13142 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/FavoriteMoviesCoordinator.strings"; sourceTree = "<group>"; };
 		BB6191E8232411E9007E4C48 /* FavoriteMoviesModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMoviesModule.swift; sourceTree = "<group>"; };
@@ -170,6 +173,7 @@
 			children = (
 				BB1C1DCC2342B8260092265D /* FavoriteMoviesListView.xib */,
 				BB1C1DCE2342B8330092265D /* FavoriteMoviesListView.swift */,
+				BB1F18C02346D5F400A70294 /* FavoriteMoviesListView.strings */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -375,6 +379,7 @@
 			files = (
 				BB082CFC2342F1D400DCE7E1 /* FavoriteMoviesListViewController.strings in Resources */,
 				BB082CF32342BC6B00DCE7E1 /* FavoriteMovieTableViewCell.xib in Resources */,
+				BB1F18BE2346D5F400A70294 /* FavoriteMoviesListView.strings in Resources */,
 				BB1C1DCD2342B8260092265D /* FavoriteMoviesListView.xib in Resources */,
 				BB082CF52342C22100DCE7E1 /* Favorites.storyboard in Resources */,
 				BB58BFE7232EBE1400A13142 /* FavoriteMoviesCoordinator.strings in Resources */,
@@ -452,6 +457,15 @@
 				BB082CFF2342F1D600DCE7E1 /* pt-BR */,
 			);
 			name = FavoriteMoviesListViewController.strings;
+			sourceTree = "<group>";
+		};
+		BB1F18C02346D5F400A70294 /* FavoriteMoviesListView.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BB1F18BF2346D5F400A70294 /* en-US */,
+				BB1F18C12346D5F600A70294 /* pt-BR */,
+			);
+			name = FavoriteMoviesListView.strings;
 			sourceTree = "<group>";
 		};
 		BB58BFE9232EBE1400A13142 /* FavoriteMoviesCoordinator.strings */ = {

@@ -1,2 +1,4 @@
 "title" = "Favoritos";
 "searchPlaceholder" = "Procurar";
+"movieWasUnfavorited" = "O filme \":movieName\" foi removido dos seus favoritos.";
+"userDoesNotHaveAnyFavorite" = "Você ainda não favoritou nenhum filme.\nPor que você não favorita alguns filmes?";

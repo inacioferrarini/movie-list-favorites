@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -12,6 +13,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavoriteMoviesListView" customModule="Favorites" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="IFw-Vf-JMS"/>
+                <outlet property="removeFilterButton" destination="iKR-aH-4RU" id="Ek7-KF-G7P"/>
+                <outlet property="removeFilterButtonHeightConstraint" destination="gQS-ut-YR6" id="oTX-cU-Lhf"/>
                 <outlet property="tableView" destination="peZ-dp-mgr" id="pAF-vS-9E2"/>
             </connections>
         </placeholder>
@@ -20,22 +23,43 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" allowsSelection="NO" rowHeight="115" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="peZ-dp-mgr">
-                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" allowsSelection="NO" rowHeight="115" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="peZ-dp-mgr">
+                    <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iKR-aH-4RU">
+                    <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <color key="backgroundColor" name="NavigationBarTitleTextColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" priority="999" constant="44" id="gQS-ut-YR6"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <color key="tintColor" name="NavigationBarBackgroundColor"/>
+                    <state key="normal" title="Button"/>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="peZ-dp-mgr" firstAttribute="top" secondItem="iKR-aH-4RU" secondAttribute="bottom" id="09h-gG-AYp"/>
                 <constraint firstAttribute="bottom" secondItem="peZ-dp-mgr" secondAttribute="bottom" id="Ens-GP-6Io"/>
                 <constraint firstItem="peZ-dp-mgr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="GcR-Fm-UYx"/>
-                <constraint firstItem="peZ-dp-mgr" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="hcA-8G-VaV"/>
+                <constraint firstItem="iKR-aH-4RU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="KgY-o2-uGg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="iKR-aH-4RU" secondAttribute="trailing" id="XTG-Cs-5Hi"/>
+                <constraint firstItem="iKR-aH-4RU" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="l62-IQ-M01"/>
                 <constraint firstItem="peZ-dp-mgr" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="nbV-NY-pQs"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="-20" y="68"/>
+            <point key="canvasLocation" x="-20.289855072463769" y="67.633928571428569"/>
         </view>
     </objects>
+    <resources>
+        <namedColor name="NavigationBarBackgroundColor">
+            <color red="0.96862745098039216" green="0.80784313725490198" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="NavigationBarTitleTextColor">
+            <color red="0.17647058823529413" green="0.18823529411764706" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

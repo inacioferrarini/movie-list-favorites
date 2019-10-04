@@ -25,12 +25,20 @@ import UIKit
 import Common
 import Ness
 
+protocol FavoriteMoviesListViewDelegate: AnyObject {
+
+    func favoriteMoviesListView(_ favoriteMoviesListView: FavoriteMoviesListView, unfavorited movie: Movie)
+
+}
+
 class FavoriteMoviesListView: UIView {
 
     // MARK: - Outlets
 
     @IBOutlet weak private(set) var contentView: UIView!
     @IBOutlet weak private(set) var tableView: UITableView!
+    @IBOutlet weak private(set) var removeFilterButton: UIButton!
+    @IBOutlet weak private(set) var removeFilterButtonHeightConstraint: NSLayoutConstraint!
 
     // MARK: - Private Properties
 
@@ -47,6 +55,8 @@ class FavoriteMoviesListView: UIView {
             }
         }
     }
+
+    weak var delegate: FavoriteMoviesListViewDelegate?
 
     // MARK: - Initialization
 
@@ -83,7 +93,16 @@ class FavoriteMoviesListView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        setup()
         setupTableView()
+    }
+
+    private func setup() {
+        removeFilterButton.setTitle(removeFilterButtonTitle, for: .normal)
+        removeFilterButton.isHidden = false // true
+        removeFilterButtonHeightConstraint.constant = 44 //0
+        setNeedsLayout()
+        layoutIfNeeded()
     }
 
     private func setupTableView() {
@@ -97,6 +116,36 @@ class FavoriteMoviesListView: UIView {
 
 }
 
+extension FavoriteMoviesListView: Internationalizable {
+
+    var unfavoriteMovieActionText: String {
+        return string("unfavoriteMovieActionText", languageCode: "en-US")
+    }
+
+    var removeFilterButtonTitle: String {
+        return string("removeFilterButtonTitle", languageCode: "en-US")
+    }
+    
+}
+
 extension FavoriteMoviesListView: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath)
+        -> UITableViewCell.EditingStyle {
+            return .none
+    }
+
+    func tableView(_ tableView: UITableView,
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard let favoriteMovie = dataProvider[indexPath] else { return nil }
+        let unfavoriteMovieAction = UIContextualAction(
+            style: .destructive,
+            title: unfavoriteMovieActionText,
+            handler: { [unowned self] (_, _, completionHandler) in
+                self.delegate?.favoriteMoviesListView(self, unfavorited: favoriteMovie)
+                completionHandler(true)
+        })
+        return UISwipeActionsConfiguration(actions: [unfavoriteMovieAction])
+    }
 
 }

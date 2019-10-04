@@ -45,25 +45,38 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        favoriteMoviesListView.favoriteMovies = appContext?.allFavorites()
+        self.loadFavorites()
     }
 
     private func setup() {
         self.title = viewControllerTitle
-//        self.movieCatalogView.delegate = self
+        self.favoriteMoviesListView.delegate = self
         self.setupSearchField()
     }
 
     private func setupSearchField() {
         self.navigationItem.searchController = searchBarController
         self.navigationItem.hidesSearchBarWhenScrolling = false
-        
+
         self.searchBarController.searchBar.barTintColor = Assets.Colors.NavigationBar.backgroundColor
         self.searchBarController.searchBar.setTextBackground(Assets.Colors.NavigationBar.textBackgroundColor)
         self.searchBarController.searchBar.showsCancelButton = false
         self.searchBarController.searchBar.showsSearchResultsButton = false
         self.searchBarController.searchBar.delegate = self
         self.searchBarController.searchBar.placeholder = searchPlaceholder
+    }
+
+    private func loadFavorites() {
+        let favorites = appContext?.allFavorites()
+        let count = favorites?.count ?? 0
+
+        if count == 0 {
+            favoriteMoviesListView.showEmptyStateView(message: userDoesNotHaveAnyFavorite)
+        } else {
+            favoriteMoviesListView.hideEmptyStateView()
+        }
+
+        favoriteMoviesListView.favoriteMovies = favorites
     }
 
 }
@@ -76,6 +89,10 @@ extension FavoriteMoviesListViewController: Internationalizable {
 
     var searchPlaceholder: String {
         return string("searchPlaceholder", languageCode: "en-US")
+    }
+
+    var userDoesNotHaveAnyFavorite: String {
+        return string("userDoesNotHaveAnyFavorite", languageCode: "en-US")
     }
 
 }
@@ -96,6 +113,18 @@ extension FavoriteMoviesListViewController: UISearchBarDelegate {
         //            searchActive = true;
         //        }
         //        self.tableView.reloadData()
+    }
+
+}
+
+extension FavoriteMoviesListViewController: FavoriteMoviesListViewDelegate {
+
+    func favoriteMoviesListView(_ favoriteMoviesListView: FavoriteMoviesListView, unfavorited movie: Movie) {
+        appContext?.remove(favorite: movie)
+        let message = string("movieWasUnfavorited", languageCode: "en-US")
+            .replacingOccurrences(of: ":movieName", with: movie.title ?? "")
+        self.toast(withSuccessMessage: message)
+        self.loadFavorites()
     }
 
 }

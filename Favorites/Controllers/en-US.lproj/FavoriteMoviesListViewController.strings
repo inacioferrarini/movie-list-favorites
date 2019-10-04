@@ -1,2 +1,4 @@
 "title" = "Favorites";
 "searchPlaceholder" = "Search";
+"movieWasUnfavorited" = "Movie \":movieName\" removed from your favorites.";
+"userDoesNotHaveAnyFavorite" = "You don't have any favorite yet.\nWhy not choose some movies?";

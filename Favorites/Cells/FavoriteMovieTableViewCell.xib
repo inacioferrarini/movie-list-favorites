@@ -49,7 +49,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" name="TabBarUnselectedTextColor"/>
+                        <color key="backgroundColor" name="FavoriteCellBackground"/>
                         <constraints>
                             <constraint firstItem="QCp-hH-KmM" firstAttribute="leading" secondItem="uZz-FV-e0B" secondAttribute="trailing" constant="8" id="25w-xF-Ftd"/>
                             <constraint firstItem="b7O-KP-yee" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QCp-hH-KmM" secondAttribute="trailing" constant="16" id="7qa-wR-BZk"/>
@@ -65,6 +65,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="p58-ES-RPl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="J7e-di-gI4"/>
                     <constraint firstItem="p58-ES-RPl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="ZNo-gP-YWA"/>
@@ -72,6 +73,7 @@
                     <constraint firstAttribute="bottom" secondItem="p58-ES-RPl" secondAttribute="bottom" id="oZt-so-UOh"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="overviewLabel" destination="zSO-Yn-Sxl" id="BUw-61-z5N"/>
@@ -83,8 +85,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="TabBarUnselectedTextColor">
-            <color red="0.45490196078431372" green="0.45490196078431372" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="FavoriteCellBackground">
+            <color red="0.84700000286102295" green="0.84700000286102295" blue="0.84700000286102295" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
