@@ -55,7 +55,7 @@ public class Favorite: NSManagedObject {
                              posterPath: movie.posterPath,
                              in: context)
     }
-    
+
     public class func favorite(movieId: Int,
                                title: String?,
                                year: Int?,

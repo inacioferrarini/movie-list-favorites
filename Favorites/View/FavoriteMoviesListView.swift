@@ -125,7 +125,7 @@ extension FavoriteMoviesListView: Internationalizable {
     var removeFilterButtonTitle: String {
         return string("removeFilterButtonTitle", languageCode: "en-US")
     }
-    
+
 }
 
 extension FavoriteMoviesListView: UITableViewDelegate {
