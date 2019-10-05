@@ -110,7 +110,6 @@ public class FavoriteMoviesCoordinator: Coordinator {
     func showMovieFilter() {
         if let nav = self.viewController as? UINavigationController,
             let vc = favoriteFilterViewController {
-//            vc.movie = movie
             nav.pushViewController(vc, animated: true)
         }
     }
@@ -134,5 +133,9 @@ extension FavoriteMoviesCoordinator: FavoriteMoviesListViewControllerDelegate {
 }
 
 extension FavoriteMoviesCoordinator: FavoriteFilterViewControllerDelegate {
+
+    func favoriteFilterViewController(_ favoriteFilterViewController: FavoriteFilterViewController, didSelect filter: FavoriteMovieFilter) {
+        print("filter : \(filter)")
+    }
 
 }

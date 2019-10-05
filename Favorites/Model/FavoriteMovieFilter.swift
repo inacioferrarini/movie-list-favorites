@@ -25,50 +25,7 @@ import Common
 import Flow
 import Ness
 
-protocol FavoriteFilterViewControllerDelegate: AnyObject {
-
-    func favoriteFilterViewController(_ favoriteFilterViewController: FavoriteFilterViewController, didSelect filter: FavoriteMovieFilter)
-
-}
-
-class FavoriteFilterViewController: UIViewController, Storyboarded {
-
-    // MARK: - Outlets
-
-    @IBOutlet weak private(set) var favoriteFilterView: FavoriteFilterView!
-
-    // MARK: - Properties
-
-    weak var appContext: AppContext?
-    weak var delegate: FavoriteFilterViewControllerDelegate?
-
-    // MARK: - Lifecycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.setup()
-    }
-
-    private func setup() {
-        self.title = viewControllerTitle
-        self.favoriteFilterView.delegate = self
-        navigationItem.largeTitleDisplayMode = .never
-    }
-
-}
-
-extension FavoriteFilterViewController: Internationalizable {
-
-    var viewControllerTitle: String {
-        return string("title", languageCode: "en-US")
-    }
-
-}
-
-extension FavoriteFilterViewController: FavoriteFilterViewDelegate {
-
-    func favoriteFilterView(_ favoriteFilterView: FavoriteFilterView, didSelected filter: FavoriteMovieFilter) {
-        self.delegate?.favoriteFilterViewController(self, didSelect: filter)
-    }
-
+struct FavoriteMovieFilter {
+    var year: Int?
+    var genre: Genre?
 }

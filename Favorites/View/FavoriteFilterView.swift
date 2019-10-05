@@ -27,7 +27,7 @@ import Ness
 
 protocol FavoriteFilterViewDelegate: AnyObject {
 
-    func applyFilter()
+    func favoriteFilterView(_ favoriteFilterView: FavoriteFilterView, didSelected filter: FavoriteMovieFilter)
 
 }
 
@@ -38,6 +38,7 @@ class FavoriteFilterView: UIView {
     @IBOutlet weak private(set) var contentView: UIView!
     @IBOutlet weak private(set) var tableView: UITableView!
     @IBOutlet weak private(set)var applyFilterButton: UIButton!
+    var filter = FavoriteMovieFilter()
 
     // MARK: - Private Properties
 
@@ -96,14 +97,14 @@ class FavoriteFilterView: UIView {
 //        tableView.dataSource = dataSource
 //        self.tableViewDataSource = dataSource
 //        tableView.delegate = self
-        
+
         tableView.tableFooterView = UIView()
     }
 
     // MARK: - Actions
 
     @IBAction func applyFilter() {
-        self.delegate?.applyFilter()
+        self.delegate?.favoriteFilterView(self, didSelected: self.filter)
     }
 
 }
