@@ -25,6 +25,12 @@ import Common
 import Flow
 import Ness
 
+protocol FavoriteMoviesListViewControllerDelegate: AnyObject {
+
+    func favoriteMoviesListShowFilter(_ favoriteMoviesListViewController: FavoriteMoviesListViewController)
+
+}
+
 class FavoriteMoviesListViewController: UIViewController, Storyboarded {
 
     // MARK: - Outlets
@@ -34,6 +40,7 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded {
     // MARK: - Properties
 
     weak var appContext: AppContext?
+    weak var delegate: FavoriteMoviesListViewControllerDelegate?
     let searchBarController = UISearchController(searchResultsController: nil)
 
     // MARK: - Lifecycle
@@ -51,13 +58,21 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded {
     private func setup() {
         self.title = viewControllerTitle
         self.favoriteMoviesListView.delegate = self
+        self.setupNavigationBar()
         self.setupSearchField()
+    }
+
+    private func setupNavigationBar() {
+        let showFiltersButton = UIButton(type: .custom)
+        showFiltersButton.setImage(Assets.Icons.Actions.filter, for: .normal)
+        showFiltersButton.addTarget(self, action: #selector(showFilters), for: .touchUpInside)
+        let showFiltersButtonItem = UIBarButtonItem(customView: showFiltersButton)
+        self.navigationItem.setRightBarButton(showFiltersButtonItem, animated: true)
     }
 
     private func setupSearchField() {
         self.navigationItem.searchController = searchBarController
         self.navigationItem.hidesSearchBarWhenScrolling = false
-
         self.searchBarController.searchBar.barTintColor = Assets.Colors.NavigationBar.backgroundColor
         self.searchBarController.searchBar.setTextBackground(Assets.Colors.NavigationBar.textBackgroundColor)
         self.searchBarController.searchBar.showsCancelButton = false
@@ -77,6 +92,12 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded {
         }
 
         favoriteMoviesListView.favoriteMovies = favorites
+    }
+
+    // MARK: - Actopms
+
+    @objc func showFilters() {
+        self.delegate?.favoriteMoviesListShowFilter(self)
     }
 
 }

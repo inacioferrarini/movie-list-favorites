@@ -64,7 +64,7 @@ public class FavoriteMoviesCoordinator: Coordinator {
 
     private lazy var favoriteMoviesViewController: FavoriteMoviesListViewController? = {
         let vc = FavoriteMoviesListViewController.instantiate(from: "Favorites")
-//        vc?.delegate = self
+        vc?.delegate = self
         vc?.appContext = self.appContext
         return vc
     }()
@@ -104,6 +104,14 @@ extension FavoriteMoviesCoordinator: Internationalizable {
 
     var tabBarItemTitle: String {
         return string("tabBarItemTitle", languageCode: "en-US")
+    }
+
+}
+
+extension FavoriteMoviesCoordinator: FavoriteMoviesListViewControllerDelegate {
+
+    func favoriteMoviesListShowFilter(_ favoriteMoviesListViewController: FavoriteMoviesListViewController) {
+        print("SHOW FILTER")
     }
 
 }
