@@ -72,7 +72,7 @@ extension FavoriteFilterViewController: Internationalizable {
     var viewControllerTitle: String {
         return string("title", languageCode: "en-US")
     }
-    
+
     var filterByDateCellTitle: String {
         return string("filterByDateCellTitle", languageCode: "en-US")
     }

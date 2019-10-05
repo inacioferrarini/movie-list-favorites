@@ -47,6 +47,12 @@ class FavoriteMoviesListView: UIView {
 
     // MARK: - Properties
 
+    var filter: FavoriteMovieFilter? {
+        didSet {
+            apply(filter: filter)
+        }
+    }
+
     var favoriteMovies: [Movie]? {
         didSet {
             if let favoriteMovies = favoriteMovies {
@@ -113,6 +119,18 @@ class FavoriteMoviesListView: UIView {
         self.tableViewDataSource = dataSource
         tableView.delegate = self
         tableView.tableFooterView = UIView()
+    }
+
+    private func apply(filter: FavoriteMovieFilter?) {
+        var height: CGFloat = 0
+        if let filter = filter, (filter.genre != nil || filter.year != nil) {
+            height = 44
+            print("has filter")
+        }
+        removeFilterButtonHeightConstraint.constant = height
+        removeFilterButton.isHidden = (height == 0)
+        setNeedsLayout()
+        layoutIfNeeded()
     }
 
 }

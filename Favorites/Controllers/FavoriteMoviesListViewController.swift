@@ -42,6 +42,7 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded {
     weak var appContext: AppContext?
     weak var delegate: FavoriteMoviesListViewControllerDelegate?
     let searchBarController = UISearchController(searchResultsController: nil)
+    var filter: FavoriteMovieFilter?
 
     // MARK: - Lifecycle
 
@@ -53,6 +54,7 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.loadFavorites()
+        self.favoriteMoviesListView.filter = filter
     }
 
     private func setup() {

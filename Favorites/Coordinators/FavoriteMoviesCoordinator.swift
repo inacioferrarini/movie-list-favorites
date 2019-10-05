@@ -135,7 +135,8 @@ extension FavoriteMoviesCoordinator: FavoriteMoviesListViewControllerDelegate {
 extension FavoriteMoviesCoordinator: FavoriteFilterViewControllerDelegate {
 
     func favoriteFilterViewController(_ favoriteFilterViewController: FavoriteFilterViewController, didSelect filter: FavoriteMovieFilter) {
-        print("[Coordinator] filter : \(filter)")
+        favoriteMoviesViewController?.filter = filter
+        favoriteFilterViewController.navigationController?.popViewController(animated: true)
     }
 
 }
