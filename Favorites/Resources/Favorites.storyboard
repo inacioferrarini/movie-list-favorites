@@ -27,5 +27,23 @@
             </objects>
             <point key="canvasLocation" x="-490" y="163"/>
         </scene>
+        <!--Favorite Filter View Controller-->
+        <scene sceneID="NmH-IV-hbt">
+            <objects>
+                <viewController storyboardIdentifier="FavoriteFilterViewController" id="xCj-fd-Nb8" customClass="FavoriteFilterViewController" customModule="Favorites" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Uv8-mp-1jZ" customClass="FavoriteFilterView" customModule="Favorites" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="UUT-Pb-vb6"/>
+                    </view>
+                    <connections>
+                        <outlet property="favoriteFilterView" destination="Uv8-mp-1jZ" id="Z9R-63-cJ6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hdO-nG-JFT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="356" y="165"/>
+        </scene>
     </scenes>
 </document>

@@ -125,14 +125,14 @@ extension FavoriteMoviesListViewController: Internationalizable {
 extension FavoriteMoviesListViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard let count = appContext?.allFavorites().count, count > 0 else { return }
-        if searchText.count > 0 {
-            let message = searchWithoutResults
-                .replacingOccurrences(of: ":searchExpression", with: searchText)
-            favoriteMoviesListView.showNotFoundView(message: message)
-        } else {
-            favoriteMoviesListView.hideNotFoundView()
-        }
+//        guard let count = appContext?.allFavorites().count, count > 0 else { return }
+//        if searchText.count > 0 {
+//            let message = searchWithoutResults
+//                .replacingOccurrences(of: ":searchExpression", with: searchText)
+//            favoriteMoviesListView.showNotFoundView(message: message)
+//        } else {
+//            favoriteMoviesListView.hideNotFoundView()
+//        }
         // print("Searchbar ... text: \(searchText)")
         //
         //        filtered = data.filter({ (text) -> Bool in

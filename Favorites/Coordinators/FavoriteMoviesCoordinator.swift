@@ -69,6 +69,13 @@ public class FavoriteMoviesCoordinator: Coordinator {
         return vc
     }()
 
+    private lazy var favoriteFilterViewController: FavoriteFilterViewController? = {
+        let vc = FavoriteFilterViewController.instantiate(from: "Favorites")
+        vc?.delegate = self
+        vc?.appContext = self.appContext
+        return vc
+    }()
+
     // MARK: - Public Methods
 
     public func start() {
@@ -98,6 +105,16 @@ public class FavoriteMoviesCoordinator: Coordinator {
         appContext.add(favorites: favoriteMovies)
     }
 
+    // MARK: - Coordinator
+
+    func showMovieFilter() {
+        if let nav = self.viewController as? UINavigationController,
+            let vc = favoriteFilterViewController {
+//            vc.movie = movie
+            nav.pushViewController(vc, animated: true)
+        }
+    }
+
 }
 
 extension FavoriteMoviesCoordinator: Internationalizable {
@@ -111,7 +128,11 @@ extension FavoriteMoviesCoordinator: Internationalizable {
 extension FavoriteMoviesCoordinator: FavoriteMoviesListViewControllerDelegate {
 
     func favoriteMoviesListShowFilter(_ favoriteMoviesListViewController: FavoriteMoviesListViewController) {
-        print("SHOW FILTER")
+        showMovieFilter()
     }
+
+}
+
+extension FavoriteMoviesCoordinator: FavoriteFilterViewControllerDelegate {
 
 }
