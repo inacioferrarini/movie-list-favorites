@@ -25,7 +25,7 @@ import Common
 import Flow
 import Ness
 
-struct FilterOption {
+struct FilterOption: Equatable {
 
     var title: String?
     var value: String?

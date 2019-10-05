@@ -42,7 +42,19 @@ class FavoriteFilterView: UIView {
 
     // MARK: - Private Properties
 
+    private var dataProvider = ArrayDataProvider<FilterOption>(section: [])
+    private var tableViewDataSource: TableViewArrayDataSource<FilterFavoriteTableViewCell, FilterOption>?
+
     // MARK: - Properties
+
+    var filterOptions: [FilterOption]? {
+        didSet {
+            if let filterOptions = filterOptions {
+                dataProvider.elements = [filterOptions]
+                tableViewDataSource?.refresh()
+            }
+        }
+    }
 
     weak var delegate: FavoriteFilterViewDelegate?
 
@@ -91,13 +103,12 @@ class FavoriteFilterView: UIView {
     }
 
     private func setupTableView() {
-//        let nib = UINib(nibName: FavoriteMovieTableViewCell.simpleClassName(), bundle: Bundle(for: type(of: self)))
-//        tableView.register(nib, forCellReuseIdentifier: FavoriteMovieTableViewCell.simpleClassName())
-//        let dataSource = TableViewArrayDataSource<FavoriteMovieTableViewCell, Movie>(for: tableView, with: dataProvider)
-//        tableView.dataSource = dataSource
-//        self.tableViewDataSource = dataSource
+        let nib = UINib(nibName: FilterFavoriteTableViewCell.simpleClassName(), bundle: Bundle(for: type(of: self)))
+        tableView.register(nib, forCellReuseIdentifier: FilterFavoriteTableViewCell.simpleClassName())
+        let dataSource = TableViewArrayDataSource<FilterFavoriteTableViewCell, FilterOption>(for: tableView, with: dataProvider)
+        tableView.dataSource = dataSource
+        self.tableViewDataSource = dataSource
 //        tableView.delegate = self
-
         tableView.tableFooterView = UIView()
     }
 

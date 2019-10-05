@@ -40,6 +40,14 @@ class FilterFavoriteTableViewCell: UITableViewCell, Configurable {
     func setup(with value: FilterOption) {
         optionTitleLabel.text = value.title ?? ""
         optionValueLabel.text = value.value ?? ""
+        accessoryType = .disclosureIndicator
+        if let textColor = Assets.Colors.NavigationBar.titleColor {
+            self.setDisclosureIndicatorColor(textColor)
+        }
+
+        let selectedBackgroundView = UIView()
+        selectedBackgroundView.backgroundColor = Assets.Colors.NavigationBar.backgroundColor
+        self.selectedBackgroundView = selectedBackgroundView
     }
 
 }

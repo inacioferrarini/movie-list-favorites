@@ -53,7 +53,17 @@ class FavoriteFilterViewController: UIViewController, Storyboarded {
         self.title = viewControllerTitle
         self.favoriteFilterView.delegate = self
         navigationItem.largeTitleDisplayMode = .never
+        filterOptionDate.title = filterByDateCellTitle
+        filterOptionGenre.title = filterByGenreCellTitle
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.favoriteFilterView.filterOptions = [filterOptionDate, filterOptionGenre]
+    }
+
+    var filterOptionDate = FilterOption()
+    var filterOptionGenre = FilterOption()
 
 }
 
@@ -61,6 +71,14 @@ extension FavoriteFilterViewController: Internationalizable {
 
     var viewControllerTitle: String {
         return string("title", languageCode: "en-US")
+    }
+    
+    var filterByDateCellTitle: String {
+        return string("filterByDateCellTitle", languageCode: "en-US")
+    }
+
+    var filterByGenreCellTitle: String {
+        return string("filterByGenreCellTitle", languageCode: "en-US")
     }
 
 }
