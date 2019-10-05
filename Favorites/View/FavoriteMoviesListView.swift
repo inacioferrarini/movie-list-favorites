@@ -112,6 +112,7 @@ class FavoriteMoviesListView: UIView {
         tableView.dataSource = dataSource
         self.tableViewDataSource = dataSource
         tableView.delegate = self
+        tableView.tableFooterView = UIView()
     }
 
 }
