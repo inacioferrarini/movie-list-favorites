@@ -54,26 +54,15 @@ public class FavoriteMoviesCoordinator: Coordinator {
         return CoreDataStack(modelFileName: modelFileName, databaseFileName: databaseFileName, bundle: bundle)
     }()
 
+    // MARK: - TabBar Management
+
     lazy var tabBarItem: UITabBarItem? = {
         return UITabBarItem(title: tabBarItemTitle,
                             image: Assets.Icons.Modules.favorite,
                             selectedImage: nil)
     }()
 
-    lazy var filterFavoriteOptionDate = {
-        return FilterFavoriteOption(id: FilterOptionKind.date.rawValue,
-                                    title: self.filterByDateOptionTitle)
-    }()
-
-    lazy var filterFavoriteOptionGenre = {
-        return FilterFavoriteOption(id: FilterOptionKind.genre.rawValue,
-                                    title: self.filterByGenreOptionTitle)
-    }()
-
-    lazy var favoriteMoviesFilterOptions = {
-        return [filterFavoriteOptionDate,
-                filterFavoriteOptionGenre]
-    }()
+    // MARK: - Coordinated ViewControllers
 
     public lazy var viewController: UIViewController = {
         guard let vc = favoriteMoviesViewController else { return UIViewController() }
@@ -104,9 +93,23 @@ public class FavoriteMoviesCoordinator: Coordinator {
         return vc
     }()
 
-    
-    
-    
+    // MARK: - Filters
+
+    lazy var filterFavoriteOptionDate = {
+        return FilterFavoriteOption(id: FilterOptionKind.date.rawValue,
+                                    title: self.filterByDateOptionTitle)
+    }()
+
+    lazy var filterFavoriteOptionGenre = {
+        return FilterFavoriteOption(id: FilterOptionKind.genre.rawValue,
+                                    title: self.filterByGenreOptionTitle)
+    }()
+
+    lazy var favoriteMoviesFilterOptions = {
+        return [filterFavoriteOptionDate,
+                filterFavoriteOptionGenre]
+    }()
+
     // MARK: - Public Methods
 
     public func start() {
@@ -127,6 +130,8 @@ public class FavoriteMoviesCoordinator: Coordinator {
         try? self.coreDataStack.saveContext()
     }
 
+    // MARK: - Favorite Management
+
     private func loadFavorites() {
         var favoriteMovies: FavoriteMoviesType = []
         if let managedObjectContext = self.coreDataStack.managedObjectContext,
@@ -146,34 +151,20 @@ public class FavoriteMoviesCoordinator: Coordinator {
     }
 
     func showMovieDateFilterOptions() {
-let opt1 = FilterOption(title: "Date 0", isChecked: false)
-let opt2 = FilterOption(title: "Date 1", isChecked: false)
-let opt3 = FilterOption(title: "Date 2", isChecked: false)
-let opt4 = FilterOption(title: "Date 3", isChecked: true)
-let opt5 = FilterOption(title: "Date 4", isChecked: false)
-let options = [opt1, opt2, opt3, opt4, opt5]
-
         if let nav = self.viewController as? UINavigationController,
             let vc = filterOptionsViewController {
             vc.filterOptionKind = FilterOptionKind.date.rawValue
-            vc.options = options
+            vc.options = self.appContext.dateSearchFilters()
             // set title
             nav.pushViewController(vc, animated: true)
         }
     }
 
     func showMovieGenreFilterOptions() {
-let opt1 = FilterOption(title: "Genre 0", isChecked: false)
-let opt2 = FilterOption(title: "Genre 1", isChecked: false)
-let opt3 = FilterOption(title: "Genre 2", isChecked: false)
-let opt4 = FilterOption(title: "Genre 3", isChecked: false)
-let opt5 = FilterOption(title: "Genre 4", isChecked: true)
-let options = [opt1, opt2, opt3, opt4, opt5]
-
         if let nav = self.viewController as? UINavigationController,
             let vc = filterOptionsViewController {
             vc.filterOptionKind = FilterOptionKind.genre.rawValue
-            vc.options = options
+            vc.options = self.appContext.genreSearchFilters(genres: appContext.get(key: GenreListSearchResultKey))
             // set title
             nav.pushViewController(vc, animated: true)
         }
@@ -225,17 +216,11 @@ extension FavoriteMoviesCoordinator: FavoriteFilterViewControllerDelegate {
 extension FavoriteMoviesCoordinator: FilterOptionsViewControllerDelegate {
 
     func filterOptionsViewController(_ filterOptionsViewController: FilterOptionsViewController, didSelected option: FilterOption, kind: Int?) {
-        
+
         // updates option stored in controller
         // updated options list in view controller
         // updates selected option in favoriteMovieFilter
-        
-        
-        
-        
-        
-        
-        
+
 //        let options = filterOptionsViewController.options?.map({ filterOption -> FilterOption in
 //            var updatedOption = filterOption
 //            updatedOption.isChecked = (option.title == filterOption.title)
