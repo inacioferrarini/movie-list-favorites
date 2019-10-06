@@ -45,5 +45,23 @@
             </objects>
             <point key="canvasLocation" x="356" y="165"/>
         </scene>
+        <!--Filter Options View Controller-->
+        <scene sceneID="hTr-5V-Rj0">
+            <objects>
+                <viewController storyboardIdentifier="FilterOptionsViewController" id="C8e-IE-jUD" customClass="FilterOptionsViewController" customModule="Favorites" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="D6t-hC-hWv" customClass="FilterOptionsView" customModule="Favorites" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="heA-nJ-Bd0"/>
+                    </view>
+                    <connections>
+                        <outlet property="filterOptionsView" destination="D6t-hC-hWv" id="r7g-iL-Xvt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Omt-JM-5JN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1196" y="163"/>
+        </scene>
     </scenes>
 </document>

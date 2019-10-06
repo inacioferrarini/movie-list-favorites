@@ -26,7 +26,96 @@ import Common
 import Ness
 
 protocol FilterOptionsViewDelegate: AnyObject {
+
+    func filterOptionsView(_ filterOptionsView: FilterOptionsView, didSelected option: Int, kind: Int?)
+
 }
 
 class FilterOptionsView: UIView {
+
+    // MARK: - Outlets
+
+    @IBOutlet weak private(set) var contentView: UIView!
+    @IBOutlet weak private(set) var tableView: UITableView!
+
+    // MARK: - Private Properties
+
+    private var dataProvider = ArrayDataProvider<FilterOption>(section: [])
+    private var tableViewDataSource: TableViewArrayDataSource<FilterOptionTableViewCell, FilterOption>?
+
+    // MARK: - Properties
+
+    var filterOptionKind: Int?
+
+    var options: [FilterOption]? {
+        didSet {
+            if let options = options {
+                dataProvider.elements = [options]
+                tableViewDataSource?.refresh()
+            }
+        }
+    }
+
+    weak var delegate: FilterOptionsViewDelegate?
+
+    // MARK: - Initialization
+
+    ///
+    /// Initializes the view with using `UIScreen.main.bounds` as frame.
+    ///
+    public required init() {
+        super.init(frame: UIScreen.main.bounds)
+        commonInit()
+    }
+
+    ///
+    /// Initializes the view with using the given `frame`.
+    /// - Parameter frame: Initial view dimensions.
+    ///
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        commonInit()
+    }
+
+    ///
+    /// Initializes the view with using the given `coder`.
+    /// - Parameter aDecoder: NSCoder to be used.
+    ///
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+
+    private func commonInit() {
+        let bundle = Bundle(for: type(of: self))
+        let className = String(describing: type(of: self))
+        bundle.loadNibNamed(className, owner: self, options: nil)
+        addSubview(contentView)
+        contentView.frame = self.bounds
+        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        setup()
+        setupTableView()
+    }
+
+    private func setup() {
+    }
+
+    private func setupTableView() {
+        let nib = UINib(nibName: FilterOptionTableViewCell.simpleClassName(), bundle: Bundle(for: type(of: self)))
+        tableView.register(nib, forCellReuseIdentifier: FilterOptionTableViewCell.simpleClassName())
+        let dataSource = TableViewArrayDataSource<FilterOptionTableViewCell, FilterOption>(for: tableView, with: dataProvider)
+        tableView.dataSource = dataSource
+        self.tableViewDataSource = dataSource
+        tableView.delegate = self
+        tableView.tableFooterView = UIView()
+    }
+
+}
+
+extension FilterOptionsView: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.delegate?.filterOptionsView(self, didSelected: indexPath.row, kind: filterOptionKind)
+    }
+
 }

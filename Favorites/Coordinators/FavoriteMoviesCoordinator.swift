@@ -31,6 +31,7 @@ public class FavoriteMoviesCoordinator: Coordinator {
 
     private var tabBar: UITabBarController
     private var appContext: AppContext
+    private var favoriteMovieFilter = FavoriteMovieFilter()
 
     enum FilterOptionKind: Int {
         case date = 0
@@ -97,6 +98,15 @@ public class FavoriteMoviesCoordinator: Coordinator {
         return vc
     }()
 
+    private lazy var filterOptionsViewController: FilterOptionsViewController? = {
+        let vc = FilterOptionsViewController.instantiate(from: "Favorites")
+        vc?.delegate = self
+        return vc
+    }()
+
+    
+    
+    
     // MARK: - Public Methods
 
     public func start() {
@@ -136,11 +146,37 @@ public class FavoriteMoviesCoordinator: Coordinator {
     }
 
     func showMovieDateFilterOptions() {
-        print("FILTER BY DATE")
+let opt1 = FilterOption(title: "Date 0", isChecked: false)
+let opt2 = FilterOption(title: "Date 1", isChecked: false)
+let opt3 = FilterOption(title: "Date 2", isChecked: false)
+let opt4 = FilterOption(title: "Date 3", isChecked: true)
+let opt5 = FilterOption(title: "Date 4", isChecked: false)
+let options = [opt1, opt2, opt3, opt4, opt5]
+
+        if let nav = self.viewController as? UINavigationController,
+            let vc = filterOptionsViewController {
+            vc.filterOptionKind = FilterOptionKind.date.rawValue
+            vc.options = options
+            // set title
+            nav.pushViewController(vc, animated: true)
+        }
     }
 
     func showMovieGenreFilterOptions() {
-        print("FILTER BY GENRE")
+let opt1 = FilterOption(title: "Genre 0", isChecked: false)
+let opt2 = FilterOption(title: "Genre 1", isChecked: false)
+let opt3 = FilterOption(title: "Genre 2", isChecked: false)
+let opt4 = FilterOption(title: "Genre 3", isChecked: false)
+let opt5 = FilterOption(title: "Genre 4", isChecked: true)
+let options = [opt1, opt2, opt3, opt4, opt5]
+
+        if let nav = self.viewController as? UINavigationController,
+            let vc = filterOptionsViewController {
+            vc.filterOptionKind = FilterOptionKind.genre.rawValue
+            vc.options = options
+            // set title
+            nav.pushViewController(vc, animated: true)
+        }
     }
 
 }
@@ -182,6 +218,39 @@ extension FavoriteMoviesCoordinator: FavoriteFilterViewControllerDelegate {
         } else if option.id == FilterOptionKind.genre.rawValue {
             showMovieGenreFilterOptions()
         }
+    }
+
+}
+
+extension FavoriteMoviesCoordinator: FilterOptionsViewControllerDelegate {
+
+    func filterOptionsViewController(_ filterOptionsViewController: FilterOptionsViewController, didSelected option: FilterOption, kind: Int?) {
+        
+        // updates option stored in controller
+        // updated options list in view controller
+        // updates selected option in favoriteMovieFilter
+        
+        
+        
+        
+        
+        
+        
+//        let options = filterOptionsViewController.options?.map({ filterOption -> FilterOption in
+//            var updatedOption = filterOption
+//            updatedOption.isChecked = (option.title == filterOption.title)
+//            return updatedOption
+//        })
+//        filterOptionsViewController.options = options
+
+//        if kind == FilterOptionKind.date.rawValue {
+//            favoriteMovieFilter.date = option.title
+//        } else if kind == FilterOptionKind.genre.rawValue {
+//            favoriteMovieFilter.genre = Genre()  //option.title
+//        }
+
+        filterOptionsViewController.navigationController?.popViewController(animated: true)
+        print("Final option selected - option: \(option) kind: \(kind)")
     }
 
 }
