@@ -27,16 +27,13 @@ import Ness
 
 protocol FavoriteFilterViewControllerDelegate: AnyObject {
 
-    func favoriteFilterViewController(_ favoriteFilterViewController: FavoriteFilterViewController, didSelect filter: FavoriteMovieFilter)
+    func favoriteFilterViewController(_ favoriteFilterViewController: FavoriteFilterViewController, didApplied filter: FavoriteMovieFilter)
+
+    func favoriteFilterViewController(_ favoriteFilterViewController: FavoriteFilterViewController, didSelected option: FilterFavoriteOption)
 
 }
 
 class FavoriteFilterViewController: UIViewController, Storyboarded {
-
-    enum FilterOptions: Int {
-        case date = 0
-        case genre = 1
-    }
 
     // MARK: - Outlets
 
@@ -46,6 +43,7 @@ class FavoriteFilterViewController: UIViewController, Storyboarded {
 
     weak var appContext: AppContext?
     weak var delegate: FavoriteFilterViewControllerDelegate?
+    var options: [FilterFavoriteOption]?
 
     // MARK: - Lifecycle
 
@@ -58,19 +56,14 @@ class FavoriteFilterViewController: UIViewController, Storyboarded {
         self.title = viewControllerTitle
         self.favoriteFilterView.delegate = self
         navigationItem.largeTitleDisplayMode = .never
-        filterFavoriteOptionDate.title = filterByDateCellTitle
-        filterFavoriteOptionGenre.title = filterByGenreCellTitle
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.favoriteFilterView.filterOptions = [filterFavoriteOptionDate, filterFavoriteOptionGenre]
+        self.favoriteFilterView.filterOptions = options
     }
 
-    var filterFavoriteOptionDate = FilterFavoriteOption()
-    var filterFavoriteOptionGenre = FilterFavoriteOption()
-
-}
+ }
 
 extension FavoriteFilterViewController: Internationalizable {
 
@@ -78,28 +71,18 @@ extension FavoriteFilterViewController: Internationalizable {
         return string("title", languageCode: "en-US")
     }
 
-    var filterByDateCellTitle: String {
-        return string("filterByDateCellTitle", languageCode: "en-US")
-    }
-
-    var filterByGenreCellTitle: String {
-        return string("filterByGenreCellTitle", languageCode: "en-US")
-    }
-
 }
 
 extension FavoriteFilterViewController: FavoriteFilterViewDelegate {
 
     func favoriteFilterView(_ favoriteFilterView: FavoriteFilterView, didApplied filter: FavoriteMovieFilter) {
-        self.delegate?.favoriteFilterViewController(self, didSelect: filter)
+        self.delegate?.favoriteFilterViewController(self, didApplied: filter)
     }
 
     func favoriteFilterView(_ favoriteFilterView: FavoriteFilterView, didSelected option: Int) {
-        if FilterOptions.date.rawValue == option {
-print("Filter by Date")
-        } else if FilterOptions.genre.rawValue == option {
-print("Filter by Genre")
-        }
+        guard let options = self.options else { return }
+        guard option < options.count else { return }
+        self.delegate?.favoriteFilterViewController(self, didSelected: options[option])
     }
 
 }

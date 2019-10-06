@@ -27,7 +27,14 @@ import Ness
 
 struct FilterFavoriteOption: Equatable {
 
+    var id: Int
     var title: String?
     var value: String?
+
+    init(id: Int, title: String? = nil, value: String? = nil) {
+        self.id = id
+        self.title = title
+        self.value = value
+    }
 
 }

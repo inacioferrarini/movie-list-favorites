@@ -32,6 +32,11 @@ public class FavoriteMoviesCoordinator: Coordinator {
     private var tabBar: UITabBarController
     private var appContext: AppContext
 
+    enum FilterOptionKind: Int {
+        case date = 0
+        case genre = 1
+    }
+
     // MARK: - Initialization
 
     public init(tabBar: UITabBarController, appContext: AppContext) {
@@ -54,6 +59,21 @@ public class FavoriteMoviesCoordinator: Coordinator {
                             selectedImage: nil)
     }()
 
+    lazy var filterFavoriteOptionDate = {
+        return FilterFavoriteOption(id: FilterOptionKind.date.rawValue,
+                                    title: self.filterByDateOptionTitle)
+    }()
+
+    lazy var filterFavoriteOptionGenre = {
+        return FilterFavoriteOption(id: FilterOptionKind.genre.rawValue,
+                                    title: self.filterByGenreOptionTitle)
+    }()
+
+    lazy var favoriteMoviesFilterOptions = {
+        return [filterFavoriteOptionDate,
+                filterFavoriteOptionGenre]
+    }()
+
     public lazy var viewController: UIViewController = {
         guard let vc = favoriteMoviesViewController else { return UIViewController() }
         if let tabBarItem = self.tabBarItem {
@@ -73,6 +93,7 @@ public class FavoriteMoviesCoordinator: Coordinator {
         let vc = FavoriteFilterViewController.instantiate(from: "Favorites")
         vc?.delegate = self
         vc?.appContext = self.appContext
+        vc?.options = self.favoriteMoviesFilterOptions
         return vc
     }()
 
@@ -114,12 +135,28 @@ public class FavoriteMoviesCoordinator: Coordinator {
         }
     }
 
+    func showMovieDateFilterOptions() {
+        print("FILTER BY DATE")
+    }
+
+    func showMovieGenreFilterOptions() {
+        print("FILTER BY GENRE")
+    }
+
 }
 
 extension FavoriteMoviesCoordinator: Internationalizable {
 
     var tabBarItemTitle: String {
         return string("tabBarItemTitle", languageCode: "en-US")
+    }
+
+    var filterByDateOptionTitle: String {
+        return string("filterByDateCellTitle", languageCode: "en-US")
+    }
+
+    var filterByGenreOptionTitle: String {
+        return string("filterByGenreCellTitle", languageCode: "en-US")
     }
 
 }
@@ -134,9 +171,17 @@ extension FavoriteMoviesCoordinator: FavoriteMoviesListViewControllerDelegate {
 
 extension FavoriteMoviesCoordinator: FavoriteFilterViewControllerDelegate {
 
-    func favoriteFilterViewController(_ favoriteFilterViewController: FavoriteFilterViewController, didSelect filter: FavoriteMovieFilter) {
+    func favoriteFilterViewController(_ favoriteFilterViewController: FavoriteFilterViewController, didApplied filter: FavoriteMovieFilter) {
         favoriteMoviesViewController?.filter = filter
         favoriteFilterViewController.navigationController?.popViewController(animated: true)
+    }
+
+    func favoriteFilterViewController(_ favoriteFilterViewController: FavoriteFilterViewController, didSelected option: FilterFavoriteOption) {
+        if option.id == FilterOptionKind.date.rawValue {
+            showMovieDateFilterOptions()
+        } else if option.id == FilterOptionKind.genre.rawValue {
+            showMovieGenreFilterOptions()
+        }
     }
 
 }
