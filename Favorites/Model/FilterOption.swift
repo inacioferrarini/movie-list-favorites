@@ -25,9 +25,26 @@ import Common
 import Flow
 import Ness
 
+///
+/// An option to be used in order to filter any kind of option.
+/// Has a text to be displayed, an id to related to the option to filter.
+/// Can keep track whether if the option was previously selected or not.
+///
 struct FilterOption: Equatable {
 
+    ///
+    /// Title for seach option - what will be displayed
+    ///
     var title: String?
-    var isChecked: Bool?
+    
+    ///
+    /// Internal identifier to relate easier with chosen option.
+    ///
+    var id: Int?
+    
+    ///
+    /// If this option is currently selected.
+    ///
+    var isSelected: Bool?
 
 }

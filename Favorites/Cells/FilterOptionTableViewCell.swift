@@ -39,7 +39,7 @@ class FilterOptionTableViewCell: UITableViewCell, Configurable {
     func setup(with value: FilterOption) {
         optionTitleLabel.text = value.title
 
-        let isChecked = value.isChecked ?? false
+        let isChecked = value.isSelected ?? false
         accessoryType = isChecked ? .checkmark : .none
         if let tintColor = Assets.Colors.NavigationBar.backgroundColor {
             self.tintColor = tintColor
