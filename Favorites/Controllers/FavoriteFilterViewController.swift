@@ -33,6 +33,11 @@ protocol FavoriteFilterViewControllerDelegate: AnyObject {
 
 class FavoriteFilterViewController: UIViewController, Storyboarded {
 
+    enum FilterOptions: Int {
+        case date = 0
+        case genre = 1
+    }
+
     // MARK: - Outlets
 
     @IBOutlet weak private(set) var favoriteFilterView: FavoriteFilterView!
@@ -53,17 +58,17 @@ class FavoriteFilterViewController: UIViewController, Storyboarded {
         self.title = viewControllerTitle
         self.favoriteFilterView.delegate = self
         navigationItem.largeTitleDisplayMode = .never
-        filterOptionDate.title = filterByDateCellTitle
-        filterOptionGenre.title = filterByGenreCellTitle
+        filterFavoriteOptionDate.title = filterByDateCellTitle
+        filterFavoriteOptionGenre.title = filterByGenreCellTitle
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.favoriteFilterView.filterOptions = [filterOptionDate, filterOptionGenre]
+        self.favoriteFilterView.filterOptions = [filterFavoriteOptionDate, filterFavoriteOptionGenre]
     }
 
-    var filterOptionDate = FilterOption()
-    var filterOptionGenre = FilterOption()
+    var filterFavoriteOptionDate = FilterFavoriteOption()
+    var filterFavoriteOptionGenre = FilterFavoriteOption()
 
 }
 
@@ -85,8 +90,16 @@ extension FavoriteFilterViewController: Internationalizable {
 
 extension FavoriteFilterViewController: FavoriteFilterViewDelegate {
 
-    func favoriteFilterView(_ favoriteFilterView: FavoriteFilterView, didSelected filter: FavoriteMovieFilter) {
+    func favoriteFilterView(_ favoriteFilterView: FavoriteFilterView, didApplied filter: FavoriteMovieFilter) {
         self.delegate?.favoriteFilterViewController(self, didSelect: filter)
+    }
+
+    func favoriteFilterView(_ favoriteFilterView: FavoriteFilterView, didSelected option: Int) {
+        if FilterOptions.date.rawValue == option {
+print("Filter by Date")
+        } else if FilterOptions.genre.rawValue == option {
+print("Filter by Genre")
+        }
     }
 
 }

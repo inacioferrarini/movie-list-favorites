@@ -21,13 +21,12 @@
 //    SOFTWARE.
 //
 
+import UIKit
 import Common
-import Flow
 import Ness
 
-struct FilterOption: Equatable {
+protocol FilterOptionsViewDelegate: AnyObject {
+}
 
-    var title: String?
-    var value: String?
-
+class FilterOptionsView: UIView {
 }

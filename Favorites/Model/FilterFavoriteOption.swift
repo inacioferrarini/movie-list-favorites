@@ -21,33 +21,13 @@
 //    SOFTWARE.
 //
 
-import UIKit
 import Common
+import Flow
 import Ness
 
-///
-/// Cell used to display a favorite movie filder
-///
-class FilterFavoriteTableViewCell: UITableViewCell, Configurable {
+struct FilterFavoriteOption: Equatable {
 
-    // MARK: - Outlets
-
-    @IBOutlet weak var optionTitleLabel: UILabel!
-    @IBOutlet weak var optionValueLabel: UILabel!
-
-    // MARK: - Setup
-
-    func setup(with value: FilterFavoriteOption) {
-        optionTitleLabel.text = value.title ?? ""
-        optionValueLabel.text = value.value ?? ""
-        accessoryType = .disclosureIndicator
-        if let textColor = Assets.Colors.NavigationBar.titleColor {
-            self.setDisclosureIndicatorColor(textColor)
-        }
-
-        let selectedBackgroundView = UIView()
-        selectedBackgroundView.backgroundColor = Assets.Colors.NavigationBar.backgroundColor
-        self.selectedBackgroundView = selectedBackgroundView
-    }
+    var title: String?
+    var value: String?
 
 }

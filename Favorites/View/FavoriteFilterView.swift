@@ -27,7 +27,9 @@ import Ness
 
 protocol FavoriteFilterViewDelegate: AnyObject {
 
-    func favoriteFilterView(_ favoriteFilterView: FavoriteFilterView, didSelected filter: FavoriteMovieFilter)
+    func favoriteFilterView(_ favoriteFilterView: FavoriteFilterView, didApplied filter: FavoriteMovieFilter)
+
+    func favoriteFilterView(_ favoriteFilterView: FavoriteFilterView, didSelected option: Int)
 
 }
 
@@ -42,12 +44,12 @@ class FavoriteFilterView: UIView {
 
     // MARK: - Private Properties
 
-    private var dataProvider = ArrayDataProvider<FilterOption>(section: [])
-    private var tableViewDataSource: TableViewArrayDataSource<FilterFavoriteTableViewCell, FilterOption>?
+    private var dataProvider = ArrayDataProvider<FilterFavoriteOption>(section: [])
+    private var tableViewDataSource: TableViewArrayDataSource<FilterFavoriteTableViewCell, FilterFavoriteOption>?
 
     // MARK: - Properties
 
-    var filterOptions: [FilterOption]? {
+    var filterOptions: [FilterFavoriteOption]? {
         didSet {
             if let filterOptions = filterOptions {
                 dataProvider.elements = [filterOptions]
@@ -105,17 +107,17 @@ class FavoriteFilterView: UIView {
     private func setupTableView() {
         let nib = UINib(nibName: FilterFavoriteTableViewCell.simpleClassName(), bundle: Bundle(for: type(of: self)))
         tableView.register(nib, forCellReuseIdentifier: FilterFavoriteTableViewCell.simpleClassName())
-        let dataSource = TableViewArrayDataSource<FilterFavoriteTableViewCell, FilterOption>(for: tableView, with: dataProvider)
+        let dataSource = TableViewArrayDataSource<FilterFavoriteTableViewCell, FilterFavoriteOption>(for: tableView, with: dataProvider)
         tableView.dataSource = dataSource
         self.tableViewDataSource = dataSource
-//        tableView.delegate = self
+        tableView.delegate = self
         tableView.tableFooterView = UIView()
     }
 
     // MARK: - Actions
 
     @IBAction func applyFilter() {
-        self.delegate?.favoriteFilterView(self, didSelected: self.filter)
+        self.delegate?.favoriteFilterView(self, didApplied: self.filter)
     }
 
 }
@@ -124,6 +126,14 @@ extension FavoriteFilterView: Internationalizable {
 
     var applyFilterButtonTitle: String {
         return string("applyFilterButtonTitle", languageCode: "en-US")
+    }
+
+}
+
+extension FavoriteFilterView: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.delegate?.favoriteFilterView(self, didSelected: indexPath.row)
     }
 
 }
