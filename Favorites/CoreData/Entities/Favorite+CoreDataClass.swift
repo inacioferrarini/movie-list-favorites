@@ -53,6 +53,7 @@ public class Favorite: NSManagedObject {
                              year: movie.releaseDate?.toDate()?.year,
                              overview: movie.overview,
                              posterPath: movie.posterPath,
+                             genreIds: movie.genreIds,
                              in: context)
     }
 
@@ -61,6 +62,7 @@ public class Favorite: NSManagedObject {
                                year: Int?,
                                overview: String?,
                                posterPath: String?,
+                               genreIds: [Int]?,
                                in context: NSManagedObjectContext) -> Favorite? {
         let favorite = self.fetch(by: movieId, in: context)
         guard favorite == nil else { return favorite }
@@ -72,7 +74,11 @@ public class Favorite: NSManagedObject {
         newFavorite.year = Int32(year ?? 0)
         newFavorite.overview = overview
         newFavorite.posterPath = posterPath
-
+        if let genresId = genreIds {
+            newFavorite.genreIds = genresId.compactMap({ return String(describing: $0) }).joined(separator: ":")
+        } else {
+            newFavorite.genreIds = nil
+        }
         return newFavorite
     }
 
