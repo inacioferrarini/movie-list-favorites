@@ -44,6 +44,7 @@ class FavoriteFilterViewController: UIViewController, Storyboarded {
     weak var appContext: AppContext?
     weak var delegate: FavoriteFilterViewControllerDelegate?
     var options: [FilterFavoriteOption]?
+    var favoriteMovieFilter: FavoriteMovieFilter?
 
     // MARK: - Lifecycle
 
@@ -60,6 +61,7 @@ class FavoriteFilterViewController: UIViewController, Storyboarded {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.favoriteFilterView.favoriteMovieFilter = favoriteMovieFilter
         self.favoriteFilterView.filterOptions = options
     }
 

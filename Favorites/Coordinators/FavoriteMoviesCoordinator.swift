@@ -83,7 +83,6 @@ public class FavoriteMoviesCoordinator: Coordinator {
         let vc = FavoriteFilterViewController.instantiate(from: "Favorites")
         vc?.delegate = self
         vc?.appContext = self.appContext
-        vc?.options = self.favoriteMoviesFilterOptions
         return vc
     }()
 
@@ -146,6 +145,8 @@ public class FavoriteMoviesCoordinator: Coordinator {
     func showMovieFilter() {
         if let nav = self.viewController as? UINavigationController,
             let vc = favoriteFilterViewController {
+            vc.favoriteMovieFilter = favoriteMovieFilter
+            vc.options = self.favoriteMoviesFilterOptions
             nav.pushViewController(vc, animated: true)
         }
     }
@@ -201,6 +202,9 @@ extension FavoriteMoviesCoordinator: FavoriteMoviesListViewControllerDelegate {
 extension FavoriteMoviesCoordinator: FavoriteFilterViewControllerDelegate {
 
     func favoriteFilterViewController(_ favoriteFilterViewController: FavoriteFilterViewController, didApplied filter: FavoriteMovieFilter) {
+        print("### ######## ################## ############")
+        print("must apply filter \(filter) .... ")
+        print("### ######## ################## ############")
         favoriteMoviesViewController?.filter = filter
         favoriteFilterViewController.navigationController?.popViewController(animated: true)
     }

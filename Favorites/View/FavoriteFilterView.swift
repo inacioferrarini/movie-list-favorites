@@ -40,7 +40,7 @@ class FavoriteFilterView: UIView {
     @IBOutlet weak private(set) var contentView: UIView!
     @IBOutlet weak private(set) var tableView: UITableView!
     @IBOutlet weak private(set)var applyFilterButton: UIButton!
-    var filter = FavoriteMovieFilter()
+    var favoriteMovieFilter: FavoriteMovieFilter?
 
     // MARK: - Private Properties
 
@@ -117,7 +117,8 @@ class FavoriteFilterView: UIView {
     // MARK: - Actions
 
     @IBAction func applyFilter() {
-        self.delegate?.favoriteFilterView(self, didApplied: self.filter)
+        guard let filter = self.favoriteMovieFilter else { return }
+        self.delegate?.favoriteFilterView(self, didApplied: filter)
     }
 
 }
