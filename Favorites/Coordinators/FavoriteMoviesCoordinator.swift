@@ -154,7 +154,8 @@ public class FavoriteMoviesCoordinator: Coordinator {
         if let nav = self.viewController as? UINavigationController,
             let vc = filterOptionsViewController {
             vc.filterOptionKind = FilterOptionKind.date.rawValue
-            vc.options = self.appContext.dateSearchFilters()
+            let selectedDate = favoriteMovieFilter.year ?? -1
+            vc.options = self.appContext.dateSearchFilters(selectedValue: selectedDate)
             // set title
             nav.pushViewController(vc, animated: true)
         }
@@ -164,7 +165,8 @@ public class FavoriteMoviesCoordinator: Coordinator {
         if let nav = self.viewController as? UINavigationController,
             let vc = filterOptionsViewController {
             vc.filterOptionKind = FilterOptionKind.genre.rawValue
-            vc.options = self.appContext.genreSearchFilters(genres: appContext.get(key: GenreListSearchResultKey))
+            let selectedGenreId = favoriteMovieFilter.genre?.id ?? -1
+            vc.options = self.appContext.genreSearchFilters(selectedValue: selectedGenreId, genres: appContext.get(key: GenreListSearchResultKey))
             // set title
             nav.pushViewController(vc, animated: true)
         }
@@ -216,26 +218,23 @@ extension FavoriteMoviesCoordinator: FavoriteFilterViewControllerDelegate {
 extension FavoriteMoviesCoordinator: FilterOptionsViewControllerDelegate {
 
     func filterOptionsViewController(_ filterOptionsViewController: FilterOptionsViewController, didSelected option: FilterOption, kind: Int?) {
-
-        // updates option stored in controller
-        // updated options list in view controller
-        // updates selected option in favoriteMovieFilter
-
-//        let options = filterOptionsViewController.options?.map({ filterOption -> FilterOption in
-//            var updatedOption = filterOption
-//            updatedOption.isChecked = (option.title == filterOption.title)
-//            return updatedOption
-//        })
-//        filterOptionsViewController.options = options
-
-//        if kind == FilterOptionKind.date.rawValue {
-//            favoriteMovieFilter.date = option.title
-//        } else if kind == FilterOptionKind.genre.rawValue {
-//            favoriteMovieFilter.genre = Genre()  //option.title
-//        }
-
+        if kind == FilterOptionKind.date.rawValue {
+            if option.id == favoriteMovieFilter.year {
+                favoriteMovieFilter.year = nil
+            } else {
+                favoriteMovieFilter.year = option.id
+            }
+        } else if kind == FilterOptionKind.genre.rawValue {
+            if option.id == favoriteMovieFilter.genre?.id {
+                favoriteMovieFilter.genre = nil
+            } else {
+                if let genres: GenreListSearchResultType = appContext.get(key: GenreListSearchResultKey),
+                    let genreId = option.id {
+                    favoriteMovieFilter.genre = genres.genre(for: genreId)
+                }
+            }
+        }
         filterOptionsViewController.navigationController?.popViewController(animated: true)
-        print("Final option selected - option: \(option) kind: \(kind)")
     }
 
 }
