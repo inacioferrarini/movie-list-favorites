@@ -120,9 +120,8 @@ public class FavoriteMoviesCoordinator: Coordinator {
 
     public func finish() {
         if let managedObjectContext = self.coreDataStack.managedObjectContext {
-            let favorites = appContext.allFavorites()
             Favorite.removeAll(in: managedObjectContext)
-            for movie in favorites {
+            for movie in appContext.favorites {
                 _ = Favorite.favorite(movie: movie, in: managedObjectContext)
             }
         }
@@ -132,7 +131,7 @@ public class FavoriteMoviesCoordinator: Coordinator {
     // MARK: - Favorite Management
 
     private func loadFavorites() {
-        var favoriteMovies: FavoriteMoviesType = []
+        var favoriteMovies: [Movie] = []
         if let managedObjectContext = self.coreDataStack.managedObjectContext,
             let favorites = Favorite.all(in: managedObjectContext) {
             favoriteMovies = favorites.compactMap({ return Movie(favorite: $0) })

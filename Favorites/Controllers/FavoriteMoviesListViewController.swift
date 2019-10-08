@@ -84,8 +84,7 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded {
     }
 
     private func loadFavorites() {
-        let favorites = appContext?.allFavorites()
-        let count = favorites?.count ?? 0
+        let count = appContext?.favorites.count ?? 0
 
         if count == 0 {
             favoriteMoviesListView.showEmptyStateView(message: userDoesNotHaveAnyFavorite)
@@ -93,7 +92,7 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded {
             favoriteMoviesListView.hideEmptyStateView()
         }
 
-        favoriteMoviesListView.favoriteMovies = favorites
+        favoriteMoviesListView.favoriteMovies = appContext?.favorites
     }
 
     // MARK: - Actopms

@@ -31,9 +31,8 @@ import Common
 extension AppContext {
 
     func uniqueFavoriteDates() -> [Int]? {
-        guard let favoriteMovies: FavoriteMoviesType = get(key: FavoriteMoviesKey) else { return nil }
         var dates: Set<Int> = []
-        for movie in favoriteMovies {
+        for movie in self.favorites {
             if let year = movie.releaseDate?.toDate()?.year {
                 dates.insert(year)
             }
@@ -42,9 +41,8 @@ extension AppContext {
     }
 
     func uniqueFavoriteGenres() -> [Int]? {
-        guard let favoriteMovies: FavoriteMoviesType = get(key: FavoriteMoviesKey) else { return nil }
         var genres: Set<Int> = []
-        for movie in favoriteMovies {
+        for movie in self.favorites {
             if let genreIds = movie.genreIds {
                 genres = genres.union(Set<Int>(genreIds))
             }
