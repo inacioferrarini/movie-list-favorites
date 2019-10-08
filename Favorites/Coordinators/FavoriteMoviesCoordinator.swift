@@ -166,7 +166,7 @@ public class FavoriteMoviesCoordinator: Coordinator {
             let vc = filterOptionsViewController {
             vc.filterOptionKind = FilterOptionKind.genre.rawValue
             let selectedGenreId = favoriteMovieFilter.genre?.id ?? -1
-            vc.options = self.appContext.genreSearchFilters(selectedValue: selectedGenreId, genres: appContext.get(key: GenreListSearchResultKey))
+            vc.options = self.appContext.genreSearchFilters(selectedValue: selectedGenreId, genres: appContext.genreList)
             // set title
             nav.pushViewController(vc, animated: true)
         }
@@ -228,7 +228,7 @@ extension FavoriteMoviesCoordinator: FilterOptionsViewControllerDelegate {
             if option.id == favoriteMovieFilter.genre?.id {
                 favoriteMovieFilter.genre = nil
             } else {
-                if let genres: GenreListSearchResultType = appContext.get(key: GenreListSearchResultKey),
+                if let genres: GenreListResult = appContext.genreList,
                     let genreId = option.id {
                     favoriteMovieFilter.genre = genres.genre(for: genreId)
                 }

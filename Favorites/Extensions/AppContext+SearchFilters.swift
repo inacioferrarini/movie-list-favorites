@@ -58,7 +58,7 @@ extension AppContext {
         })
     }
 
-    func genreSearchFilters(selectedValue: Int = -1, genres: GenreListSearchResultType?) -> [FilterOption]? {
+    func genreSearchFilters(selectedValue: Int = -1, genres: GenreListResult?) -> [FilterOption]? {
         guard let ids = uniqueFavoriteGenres() else { return nil }
         return ids.map({ genreId -> FilterOption in
             let isSelected = (genreId == selectedValue)
