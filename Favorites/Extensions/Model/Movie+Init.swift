@@ -38,7 +38,7 @@ public extension Movie {
         posterPath = favorite.posterPath
         title = favorite.title
         releaseDate = "\(favorite.year)-01-01"
-        genreIds = favorite.genreIds?.split(separator: ":").flatMap({ return Int($0) })
+        genreIds = favorite.genreIds?.split(separator: ":").compactMap({ return Int($0) })
         isFavorite = true
     }
 
