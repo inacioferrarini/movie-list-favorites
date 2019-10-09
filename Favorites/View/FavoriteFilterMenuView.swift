@@ -25,15 +25,15 @@ import UIKit
 import Common
 import Ness
 
-protocol FavoriteFilterViewDelegate: AnyObject {
+protocol FavoriteFilterMenuViewDelegate: AnyObject {
 
-    func favoriteFilterView(_ favoriteFilterView: FavoriteFilterView, didApplied filter: FavoriteMovieFilter)
+    func favoriteFilterMenuView(_ favoriteFilterMenuView: FavoriteFilterMenuView, didApplied filter: FavoriteMovieFilter)
 
-    func favoriteFilterView(_ favoriteFilterView: FavoriteFilterView, didSelected option: Int)
+    func favoriteFilterMenuView(_ favoriteFilterMenuView: FavoriteFilterMenuView, didSelected option: Int)
 
 }
 
-class FavoriteFilterView: UIView {
+class FavoriteFilterMenuView: UIView {
 
     // MARK: - Outlets
 
@@ -64,7 +64,7 @@ class FavoriteFilterView: UIView {
         }
     }
 
-    weak var delegate: FavoriteFilterViewDelegate?
+    weak var delegate: FavoriteFilterMenuViewDelegate?
 
     // MARK: - Initialization
 
@@ -127,24 +127,24 @@ class FavoriteFilterView: UIView {
 
     @IBAction func applyFilter() {
         guard let filter = self.favoriteMovieFilter else { return }
-        self.delegate?.favoriteFilterView(self, didApplied: filter)
+        self.delegate?.favoriteFilterMenuView(self, didApplied: filter)
     }
 
 }
 
-extension FavoriteFilterView: Internationalizable {
+extension FavoriteFilterMenuView: Internationalizable {
 
     var applyFilterButtonTitle: String {
         guard let language = appLanguage?.rawValue else { return "#INVALID_LANGUAGE#" }
-        return string("applyFilterButtonTitle", languageCode: "en-US")
+        return string("applyFilterButtonTitle", languageCode: language)
     }
 
 }
 
-extension FavoriteFilterView: UITableViewDelegate {
+extension FavoriteFilterMenuView: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.delegate?.favoriteFilterView(self, didSelected: indexPath.row)
+        self.delegate?.favoriteFilterMenuView(self, didSelected: indexPath.row)
     }
 
 }

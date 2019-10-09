@@ -25,24 +25,24 @@ import Common
 import Flow
 import Ness
 
-protocol FavoriteFilterViewControllerDelegate: AnyObject {
+protocol FavoriteFilterMenuViewControllerDelegate: AnyObject {
 
-    func favoriteFilterViewController(_ favoriteFilterViewController: FavoriteFilterViewController, didApplied filter: FavoriteMovieFilter)
+    func favoriteFilterMenuViewController(_ favoriteFilterMenuViewController: FavoriteFilterMenuViewController, didApplied filter: FavoriteMovieFilter)
 
-    func favoriteFilterViewController(_ favoriteFilterViewController: FavoriteFilterViewController, didSelected option: FilterFavoriteOption)
+    func favoriteFilterMenuViewController(_ favoriteFilterMenuViewController: FavoriteFilterMenuViewController, didSelected option: FilterFavoriteOption)
 
 }
 
-class FavoriteFilterViewController: UIViewController, Storyboarded {
+class FavoriteFilterMenuViewController: UIViewController, Storyboarded {
 
     // MARK: - Outlets
 
-    @IBOutlet weak private(set) var favoriteFilterView: FavoriteFilterView!
+    @IBOutlet weak private(set) var favoriteFilterMenuView: FavoriteFilterMenuView!
 
     // MARK: - Properties
 
     weak var appContext: AppContext?
-    weak var delegate: FavoriteFilterViewControllerDelegate?
+    weak var delegate: FavoriteFilterMenuViewControllerDelegate?
     var options: [FilterFavoriteOption]?
     var favoriteMovieFilter: FavoriteMovieFilter?
 
@@ -55,20 +55,20 @@ class FavoriteFilterViewController: UIViewController, Storyboarded {
 
     private func setup() {
         self.title = viewControllerTitle
-        self.favoriteFilterView.delegate = self
-        self.favoriteFilterView.appLanguage = appContext?.appLanguage
+        self.favoriteFilterMenuView.delegate = self
+        self.favoriteFilterMenuView.appLanguage = appContext?.appLanguage
         navigationItem.largeTitleDisplayMode = .never
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.favoriteFilterView.favoriteMovieFilter = favoriteMovieFilter
-        self.favoriteFilterView.filterOptions = options
+        self.favoriteFilterMenuView.favoriteMovieFilter = favoriteMovieFilter
+        self.favoriteFilterMenuView.filterOptions = options
     }
 
  }
 
-extension FavoriteFilterViewController: Internationalizable {
+extension FavoriteFilterMenuViewController: Internationalizable {
 
     var viewControllerTitle: String {
         guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
@@ -77,16 +77,16 @@ extension FavoriteFilterViewController: Internationalizable {
 
 }
 
-extension FavoriteFilterViewController: FavoriteFilterViewDelegate {
+extension FavoriteFilterMenuViewController: FavoriteFilterMenuViewDelegate {
 
-    func favoriteFilterView(_ favoriteFilterView: FavoriteFilterView, didApplied filter: FavoriteMovieFilter) {
-        self.delegate?.favoriteFilterViewController(self, didApplied: filter)
+    func favoriteFilterMenuView(_ favoriteFilterMenuView: FavoriteFilterMenuView, didApplied filter: FavoriteMovieFilter) {
+        self.delegate?.favoriteFilterMenuViewController(self, didApplied: filter)
     }
 
-    func favoriteFilterView(_ favoriteFilterView: FavoriteFilterView, didSelected option: Int) {
+    func favoriteFilterMenuView(_ favoriteFilterMenuView: FavoriteFilterMenuView, didSelected option: Int) {
         guard let options = self.options else { return }
         guard option < options.count else { return }
-        self.delegate?.favoriteFilterViewController(self, didSelected: options[option])
+        self.delegate?.favoriteFilterMenuViewController(self, didSelected: options[option])
     }
 
 }

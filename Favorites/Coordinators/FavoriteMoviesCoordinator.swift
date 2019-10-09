@@ -79,8 +79,8 @@ public class FavoriteMoviesCoordinator: Coordinator {
         return vc
     }()
 
-    private lazy var favoriteFilterViewController: FavoriteFilterViewController? = {
-        let vc = FavoriteFilterViewController.instantiate(from: "Favorites")
+    private lazy var favoriteFilterMenuViewController: FavoriteFilterMenuViewController? = {
+        let vc = FavoriteFilterMenuViewController.instantiate(from: "Favorites")
         vc?.delegate = self
         vc?.appContext = self.appContext
         return vc
@@ -143,7 +143,7 @@ public class FavoriteMoviesCoordinator: Coordinator {
 
     func showMovieFilter() {
         if let nav = self.viewController as? UINavigationController,
-            let vc = favoriteFilterViewController {
+            let vc = favoriteFilterMenuViewController {
             vc.favoriteMovieFilter = favoriteMovieFilter
             vc.options = self.favoriteMoviesFilterOptions
             nav.pushViewController(vc, animated: true)
@@ -201,14 +201,14 @@ extension FavoriteMoviesCoordinator: FavoriteMoviesListViewControllerDelegate {
 
 }
 
-extension FavoriteMoviesCoordinator: FavoriteFilterViewControllerDelegate {
+extension FavoriteMoviesCoordinator: FavoriteFilterMenuViewControllerDelegate {
 
-    func favoriteFilterViewController(_ favoriteFilterViewController: FavoriteFilterViewController, didApplied filter: FavoriteMovieFilter) {
+    func favoriteFilterMenuViewController(_ favoriteFilterViewController: FavoriteFilterMenuViewController, didApplied filter: FavoriteMovieFilter) {
         favoriteMoviesViewController?.filter = filter
         favoriteFilterViewController.navigationController?.popViewController(animated: true)
     }
 
-    func favoriteFilterViewController(_ favoriteFilterViewController: FavoriteFilterViewController, didSelected option: FilterFavoriteOption) {
+    func favoriteFilterMenuViewController(_ favoriteFilterViewController: FavoriteFilterMenuViewController, didSelected option: FilterFavoriteOption) {
         if option.id == FilterOptionKind.date.rawValue {
             showMovieDateFilterOptions()
         } else if option.id == FilterOptionKind.genre.rawValue {
@@ -237,7 +237,7 @@ extension FavoriteMoviesCoordinator: FilterOptionsViewControllerDelegate {
                 }
             }
         }
-        self.favoriteFilterViewController?.favoriteMovieFilter = favoriteMovieFilter
+        self.favoriteFilterMenuViewController?.favoriteMovieFilter = favoriteMovieFilter
         filterOptionsViewController.navigationController?.popViewController(animated: true)
     }
 
