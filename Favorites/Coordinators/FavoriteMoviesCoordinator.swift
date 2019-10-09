@@ -177,15 +177,18 @@ public class FavoriteMoviesCoordinator: Coordinator {
 extension FavoriteMoviesCoordinator: Internationalizable {
 
     var tabBarItemTitle: String {
-        return string("tabBarItemTitle", languageCode: "en-US")
+        let language = appContext.appLanguage.rawValue
+        return string("tabBarItemTitle", languageCode: language)
     }
 
     var filterByDateOptionTitle: String {
-        return string("filterByDateCellTitle", languageCode: "en-US")
+        let language = appContext.appLanguage.rawValue
+        return string("filterByDateCellTitle", languageCode: language)
     }
 
     var filterByGenreOptionTitle: String {
-        return string("filterByGenreCellTitle", languageCode: "en-US")
+        let language = appContext.appLanguage.rawValue
+        return string("filterByGenreCellTitle", languageCode: language)
     }
 
 }

@@ -62,6 +62,12 @@ class FavoriteMoviesListView: UIView {
         }
     }
 
+    var appLanguage: Language? {
+        didSet {
+            setupTitles()
+        }
+    }
+
     weak var delegate: FavoriteMoviesListViewDelegate?
 
     // MARK: - Initialization
@@ -104,11 +110,14 @@ class FavoriteMoviesListView: UIView {
     }
 
     private func setup() {
-        removeFilterButton.setTitle(removeFilterButtonTitle, for: .normal)
         removeFilterButton.isHidden = false // true
         removeFilterButtonHeightConstraint.constant = 44 //0
         setNeedsLayout()
         layoutIfNeeded()
+    }
+
+    private func setupTitles() {
+        removeFilterButton.setTitle(removeFilterButtonTitle, for: .normal)
     }
 
     private func setupTableView() {
@@ -138,11 +147,13 @@ class FavoriteMoviesListView: UIView {
 extension FavoriteMoviesListView: Internationalizable {
 
     var unfavoriteMovieActionText: String {
-        return string("unfavoriteMovieActionText", languageCode: "en-US")
+        guard let language = appLanguage?.rawValue else { return "#INVALID_LANGUAGE#" }
+        return string("unfavoriteMovieActionText", languageCode: language)
     }
 
     var removeFilterButtonTitle: String {
-        return string("removeFilterButtonTitle", languageCode: "en-US")
+        guard let language = appLanguage?.rawValue else { return "#INVALID_LANGUAGE#" }
+        return string("removeFilterButtonTitle", languageCode: language)
     }
 
 }

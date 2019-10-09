@@ -58,6 +58,12 @@ class FavoriteFilterView: UIView {
         }
     }
 
+    var appLanguage: Language? {
+        didSet {
+            setupTitles()
+        }
+    }
+
     weak var delegate: FavoriteFilterViewDelegate?
 
     // MARK: - Initialization
@@ -101,6 +107,9 @@ class FavoriteFilterView: UIView {
 
     private func setup() {
         applyFilterButton.roundBorder(width: 1, radius: 8)
+    }
+
+    private func setupTitles() {
         applyFilterButton.setTitle(applyFilterButtonTitle, for: .normal)
     }
 
@@ -126,6 +135,7 @@ class FavoriteFilterView: UIView {
 extension FavoriteFilterView: Internationalizable {
 
     var applyFilterButtonTitle: String {
+        guard let language = appLanguage?.rawValue else { return "#INVALID_LANGUAGE#" }
         return string("applyFilterButtonTitle", languageCode: "en-US")
     }
 

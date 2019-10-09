@@ -36,12 +36,12 @@ struct FilterOption: Equatable {
     /// Title for seach option - what will be displayed
     ///
     var title: String?
-    
+
     ///
     /// Internal identifier to relate easier with chosen option.
     ///
     var id: Int?
-    
+
     ///
     /// If this option is currently selected.
     ///

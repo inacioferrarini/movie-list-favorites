@@ -56,6 +56,7 @@ class FavoriteFilterViewController: UIViewController, Storyboarded {
     private func setup() {
         self.title = viewControllerTitle
         self.favoriteFilterView.delegate = self
+        self.favoriteFilterView.appLanguage = appContext?.appLanguage
         navigationItem.largeTitleDisplayMode = .never
     }
 
@@ -70,7 +71,8 @@ class FavoriteFilterViewController: UIViewController, Storyboarded {
 extension FavoriteFilterViewController: Internationalizable {
 
     var viewControllerTitle: String {
-        return string("title", languageCode: "en-US")
+        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
+        return string("title", languageCode: language)
     }
 
 }

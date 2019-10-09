@@ -60,6 +60,7 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded {
     private func setup() {
         self.title = viewControllerTitle
         self.favoriteMoviesListView.delegate = self
+        self.favoriteMoviesListView.appLanguage = appContext?.appLanguage
         self.setupNavigationBar()
         self.setupSearchField()
     }
@@ -106,19 +107,28 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded {
 extension FavoriteMoviesListViewController: Internationalizable {
 
     var viewControllerTitle: String {
-        return string("title", languageCode: "en-US")
+        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
+        return string("title", languageCode: language)
     }
 
     var searchPlaceholder: String {
-        return string("searchPlaceholder", languageCode: "en-US")
+        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
+        return string("searchPlaceholder", languageCode: language)
     }
 
     var userDoesNotHaveAnyFavorite: String {
-        return string("userDoesNotHaveAnyFavorite", languageCode: "en-US")
+        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
+        return string("userDoesNotHaveAnyFavorite", languageCode: language)
     }
 
     var searchWithoutResults: String {
-        return string("searchWithoutResults", languageCode: "en-US")
+        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
+        return string("searchWithoutResults", languageCode: language)
+    }
+
+    var movieWasUnfavoritedMessage: String {
+        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
+        return string("movieWasUnfavorited", languageCode: language)
     }
 
 }
@@ -155,7 +165,7 @@ extension FavoriteMoviesListViewController: FavoriteMoviesListViewDelegate {
 
     func favoriteMoviesListView(_ favoriteMoviesListView: FavoriteMoviesListView, unfavorited movie: Movie) {
         appContext?.remove(favorite: movie)
-        let message = string("movieWasUnfavorited", languageCode: "en-US")
+        let message = movieWasUnfavoritedMessage
             .replacingOccurrences(of: ":movieName", with: movie.title ?? "")
         self.toast(withSuccessMessage: message)
         self.loadFavorites()
