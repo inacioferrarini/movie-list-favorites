@@ -25,18 +25,14 @@ import Common
 import Flow
 import Ness
 
-public class FavoriteMoviesCoordinator: Coordinator, LanguageAware {
+public class FavoriteMoviesCoordinator: Coordinator, AppContextAware, LanguageAware {
 
     // MARK: - Private Properties
 
     private var tabBar: UITabBarController
-    private var appContext: AppContext
+    public var appContext: AppContext?
     private var favoriteMovieFilter = FavoriteMovieFilter()
 
-public var appLanguage: Language? {
-    return appContext.appLanguage
-}
-    
     enum FilterOptionKind: Int {
         case date = 0
         case genre = 1
@@ -123,9 +119,10 @@ public var appLanguage: Language? {
     }
 
     public func finish() {
-        if let managedObjectContext = self.coreDataStack.managedObjectContext {
+        if let favorites = appContext?.favorites,
+            let managedObjectContext = self.coreDataStack.managedObjectContext {
             Favorite.removeAll(in: managedObjectContext)
-            for movie in appContext.favorites {
+            for movie in favorites {
                 _ = Favorite.favorite(movie: movie, in: managedObjectContext)
             }
         }
@@ -140,7 +137,7 @@ public var appLanguage: Language? {
             let favorites = Favorite.all(in: managedObjectContext) {
             favoriteMovies = favorites.compactMap({ return Movie(favorite: $0) })
         }
-        appContext.add(favorites: favoriteMovies)
+        appContext?.add(favorites: favoriteMovies)
     }
 
     // MARK: - Coordinator
@@ -156,10 +153,11 @@ public var appLanguage: Language? {
 
     func showMovieDateFilterOptions() {
         if let nav = self.viewController as? UINavigationController,
-            let vc = filterOptionsViewController {
+            let vc = filterOptionsViewController,
+            let appContext = self.appContext {
             vc.filterOptionKind = FilterOptionKind.date.rawValue
             let selectedDate = favoriteMovieFilter.year ?? -1
-            vc.options = self.appContext.dateSearchFilters(selectedValue: selectedDate)
+            vc.options = appContext.dateSearchFilters(selectedValue: selectedDate)
             // set title
             nav.pushViewController(vc, animated: true)
         }
@@ -167,10 +165,11 @@ public var appLanguage: Language? {
 
     func showMovieGenreFilterOptions() {
         if let nav = self.viewController as? UINavigationController,
-            let vc = filterOptionsViewController {
+            let vc = filterOptionsViewController,
+            let appContext = self.appContext {
             vc.filterOptionKind = FilterOptionKind.genre.rawValue
             let selectedGenreId = favoriteMovieFilter.genre?.id ?? -1
-            vc.options = self.appContext.genreSearchFilters(selectedValue: selectedGenreId, genres: appContext.genreList)
+            vc.options = appContext.genreSearchFilters(selectedValue: selectedGenreId, genres: appContext.genreList)
             // set title
             nav.pushViewController(vc, animated: true)
         }
@@ -222,6 +221,7 @@ extension FavoriteMoviesCoordinator: FavoriteFilterMenuViewControllerDelegate {
 extension FavoriteMoviesCoordinator: FilterOptionsViewControllerDelegate {
 
     func filterOptionsViewController(_ filterOptionsViewController: FilterOptionsViewController, didSelected option: FilterOption, kind: Int?) {
+        guard let appContext = self.appContext else { return }
         if kind == FilterOptionKind.date.rawValue {
             if option.id == favoriteMovieFilter.year {
                 favoriteMovieFilter.year = nil
