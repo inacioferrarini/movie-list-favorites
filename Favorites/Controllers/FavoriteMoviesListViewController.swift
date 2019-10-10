@@ -31,7 +31,7 @@ protocol FavoriteMoviesListViewControllerDelegate: AnyObject {
 
 }
 
-class FavoriteMoviesListViewController: UIViewController, Storyboarded {
+class FavoriteMoviesListViewController: UIViewController, Storyboarded, AppContextAware, LanguageAware {
 
     // MARK: - Outlets
 
@@ -107,28 +107,23 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded {
 extension FavoriteMoviesListViewController: Internationalizable {
 
     var viewControllerTitle: String {
-        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
-        return string("title", languageCode: language)
+        return s("title")
     }
 
     var searchPlaceholder: String {
-        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
-        return string("searchPlaceholder", languageCode: language)
+        return s("searchPlaceholder")
     }
 
     var userDoesNotHaveAnyFavorite: String {
-        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
-        return string("userDoesNotHaveAnyFavorite", languageCode: language)
+        return s("userDoesNotHaveAnyFavorite")
     }
 
     var searchWithoutResults: String {
-        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
-        return string("searchWithoutResults", languageCode: language)
+        return s("searchWithoutResults")
     }
 
     var movieWasUnfavoritedMessage: String {
-        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
-        return string("movieWasUnfavorited", languageCode: language)
+        return s("movieWasUnfavorited")
     }
 
 }
