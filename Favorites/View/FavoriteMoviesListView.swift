@@ -31,7 +31,7 @@ protocol FavoriteMoviesListViewDelegate: AnyObject {
 
 }
 
-class FavoriteMoviesListView: UIView {
+class FavoriteMoviesListView: UIView, LanguageAware {
 
     // MARK: - Outlets
 

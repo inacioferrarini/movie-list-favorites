@@ -33,7 +33,7 @@ protocol FavoriteFilterMenuViewDelegate: AnyObject {
 
 }
 
-class FavoriteFilterMenuView: UIView {
+class FavoriteFilterMenuView: UIView, LanguageAware {
 
     // MARK: - Outlets
 

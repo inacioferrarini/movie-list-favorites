@@ -33,7 +33,7 @@ protocol FavoriteFilterMenuViewControllerDelegate: AnyObject {
 
 }
 
-class FavoriteFilterMenuViewController: UIViewController, Storyboarded {
+class FavoriteFilterMenuViewController: UIViewController, Storyboarded, AppContextAware, LanguageAware {
 
     // MARK: - Outlets
 
@@ -71,8 +71,7 @@ class FavoriteFilterMenuViewController: UIViewController, Storyboarded {
 extension FavoriteFilterMenuViewController: Internationalizable {
 
     var viewControllerTitle: String {
-        guard let language = appContext?.appLanguage.rawValue else { return "#INVALID_LANGUAGE#" }
-        return string("title", languageCode: language)
+        return s("title")
     }
 
 }

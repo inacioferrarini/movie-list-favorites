@@ -25,7 +25,7 @@ import Common
 import Flow
 import Ness
 
-public class FavoriteMoviesCoordinator: Coordinator {
+public class FavoriteMoviesCoordinator: Coordinator, LanguageAware {
 
     // MARK: - Private Properties
 
@@ -33,6 +33,10 @@ public class FavoriteMoviesCoordinator: Coordinator {
     private var appContext: AppContext
     private var favoriteMovieFilter = FavoriteMovieFilter()
 
+public var appLanguage: Language? {
+    return appContext.appLanguage
+}
+    
     enum FilterOptionKind: Int {
         case date = 0
         case genre = 1
@@ -177,18 +181,15 @@ public class FavoriteMoviesCoordinator: Coordinator {
 extension FavoriteMoviesCoordinator: Internationalizable {
 
     var tabBarItemTitle: String {
-        let language = appContext.appLanguage.rawValue
-        return string("tabBarItemTitle", languageCode: language)
+        return s("tabBarItemTitle")
     }
 
     var filterByDateOptionTitle: String {
-        let language = appContext.appLanguage.rawValue
-        return string("filterByDateCellTitle", languageCode: language)
+        return s("filterByDateCellTitle")
     }
 
     var filterByGenreOptionTitle: String {
-        let language = appContext.appLanguage.rawValue
-        return string("filterByGenreCellTitle", languageCode: language)
+        return s("filterByGenreCellTitle")
     }
 
 }
