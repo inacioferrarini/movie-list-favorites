@@ -38,6 +38,9 @@
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                     <color key="tintColor" name="NavigationBarBackgroundColor"/>
                     <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="removeFilters" destination="-1" eventType="touchUpInside" id="kfs-Fy-zFj"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

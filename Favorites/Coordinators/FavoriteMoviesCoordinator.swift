@@ -199,6 +199,11 @@ extension FavoriteMoviesCoordinator: FavoriteMoviesListViewControllerDelegate {
         showMovieFilter()
     }
 
+    func favoriteMoviesListShowFilterDidRemoveFilter(_ favoriteMoviesListViewController: FavoriteMoviesListViewController) {
+        self.favoriteMovieFilter.genre = nil
+        self.favoriteMovieFilter.year = nil
+    }
+
 }
 
 extension FavoriteMoviesCoordinator: FavoriteFilterMenuViewControllerDelegate {

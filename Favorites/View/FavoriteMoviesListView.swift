@@ -29,6 +29,8 @@ protocol FavoriteMoviesListViewDelegate: AnyObject {
 
     func favoriteMoviesListView(_ favoriteMoviesListView: FavoriteMoviesListView, unfavorited movie: Movie)
 
+    func favoriteMoviesListViewDidRemoveFilter(_ favoriteMoviesListView: FavoriteMoviesListView)
+
 }
 
 class FavoriteMoviesListView: UIView, LanguageAware {
@@ -69,6 +71,13 @@ class FavoriteMoviesListView: UIView, LanguageAware {
     }
 
     weak var delegate: FavoriteMoviesListViewDelegate?
+
+    var predicate: NSPredicate? {
+        didSet {
+            self.dataProvider.predicate = predicate
+            tableViewDataSource?.refresh()
+        }
+    }
 
     // MARK: - Initialization
 
@@ -140,6 +149,10 @@ class FavoriteMoviesListView: UIView, LanguageAware {
         removeFilterButton.isHidden = (height == 0)
         setNeedsLayout()
         layoutIfNeeded()
+    }
+
+    @IBAction func removeFilters() {
+        self.delegate?.favoriteMoviesListViewDidRemoveFilter(self)
     }
 
 }

@@ -29,6 +29,8 @@ protocol FavoriteMoviesListViewControllerDelegate: AnyObject {
 
     func favoriteMoviesListShowFilter(_ favoriteMoviesListViewController: FavoriteMoviesListViewController)
 
+    func favoriteMoviesListShowFilterDidRemoveFilter(_ favoriteMoviesListViewController: FavoriteMoviesListViewController)
+
 }
 
 class FavoriteMoviesListViewController: UIViewController, Storyboarded, AppContextAware, LanguageAware {
@@ -41,8 +43,18 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded, AppConte
 
     weak var appContext: AppContext?
     weak var delegate: FavoriteMoviesListViewControllerDelegate?
-    let searchBarController = UISearchController(searchResultsController: nil)
-    var filter: FavoriteMovieFilter?
+    let searchController = UISearchController(searchResultsController: nil)
+    var filter: FavoriteMovieFilter? {
+        didSet {
+            applyFilters()
+        }
+    }
+
+    // MARK: - Search
+
+    var isSearchBarEmpty: Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
 
     // MARK: - Lifecycle
 
@@ -61,11 +73,12 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded, AppConte
         self.title = viewControllerTitle
         self.favoriteMoviesListView.delegate = self
         self.favoriteMoviesListView.appLanguage = appContext?.appLanguage
-        self.setupNavigationBar()
-        self.setupSearchField()
+        self.setupNavigationBarItens()
+        self.setupSearchController()
+        setupNavigationItem()
     }
 
-    private func setupNavigationBar() {
+    private func setupNavigationBarItens() {
         let showFiltersButton = UIButton(type: .custom)
         showFiltersButton.setImage(Assets.Icons.Actions.filter, for: .normal)
         showFiltersButton.addTarget(self, action: #selector(showFilters), for: .touchUpInside)
@@ -73,16 +86,19 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded, AppConte
         self.navigationItem.setRightBarButton(showFiltersButtonItem, animated: true)
     }
 
-    private func setupSearchField() {
-        self.navigationItem.searchController = searchBarController
-        self.navigationItem.hidesSearchBarWhenScrolling = false
-        self.searchBarController.searchBar.barTintColor = Assets.Colors.NavigationBar.backgroundColor
-        self.searchBarController.searchBar.setTextBackground(Assets.Colors.NavigationBar.textBackgroundColor)
-        self.searchBarController.searchBar.showsCancelButton = false
-        self.searchBarController.searchBar.showsSearchResultsButton = false
-        self.searchBarController.searchBar.delegate = self
-        self.searchBarController.searchBar.placeholder = searchPlaceholder
+    private func setupSearchController() {
+        self.searchController.searchBar.barTintColor = Assets.Colors.NavigationBar.backgroundColor
+        self.searchController.searchBar.setTextBackground(Assets.Colors.NavigationBar.textBackgroundColor)
+        self.searchController.searchResultsUpdater = self
+        self.searchController.obscuresBackgroundDuringPresentation = false
+        self.searchController.searchBar.placeholder = searchPlaceholder
+        self.definesPresentationContext = true
     }
+
+    private func setupNavigationItem() {
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+        self.navigationItem.searchController = searchController
+     }
 
     private func loadFavorites() {
         let count = appContext?.favorites.count ?? 0
@@ -96,10 +112,49 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded, AppConte
         favoriteMoviesListView.favoriteMovies = appContext?.favorites
     }
 
-    // MARK: - Actopms
+    // MARK: - Actions
 
     @objc func showFilters() {
         self.delegate?.favoriteMoviesListShowFilter(self)
+    }
+
+    // MARK: - Filters
+
+    func applyFilters() {
+        guard self.favoriteMoviesListView != nil else { return }
+        var predicates: [NSPredicate] = []
+
+        if let searchText = searchController.searchBar.text, searchText.count > 0 {
+            let predicate = NSPredicate { (evaluatedObject, _) -> Bool in
+                guard let movie = evaluatedObject as? Movie else { return false }
+                return movie.title?.contains(searchText) ?? false
+            }
+            predicates.append(predicate)
+        }
+
+        if let filter = self.filter, let filterGenre = filter.genre, let filterGenreId = filterGenre.id {
+            let predicate = NSPredicate { (evaluatedObject, _) -> Bool in
+                guard let movie = evaluatedObject as? Movie else { return false }
+                guard let movieGenreIds = movie.genreIds else { return false }
+                return movieGenreIds.contains(filterGenreId)
+            }
+            predicates.append(predicate)
+        }
+
+        if let filter = self.filter, let filterYear = filter.year {
+            let predicate = NSPredicate { (evaluatedObject, _) -> Bool in
+                guard let movie = evaluatedObject as? Movie else { return false }
+                guard let movieYear = movie.releaseDate?.toDate()?.year else { return false }
+                return (movieYear == filterYear)
+            }
+            predicates.append(predicate)
+        }
+
+        if predicates.count > 0 {
+            self.favoriteMoviesListView.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+        } else {
+            self.favoriteMoviesListView.predicate = nil
+        }
     }
 
 }
@@ -128,30 +183,10 @@ extension FavoriteMoviesListViewController: Internationalizable {
 
 }
 
-extension FavoriteMoviesListViewController: UISearchBarDelegate {
+extension FavoriteMoviesListViewController: UISearchResultsUpdating {
 
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        guard let count = appContext?.allFavorites().count, count > 0 else { return }
-//        if searchText.count > 0 {
-//            let message = searchWithoutResults
-//                .replacingOccurrences(of: ":searchExpression", with: searchText)
-//            favoriteMoviesListView.showNotFoundView(message: message)
-//        } else {
-//            favoriteMoviesListView.hideNotFoundView()
-//        }
-        // print("Searchbar ... text: \(searchText)")
-        //
-        //        filtered = data.filter({ (text) -> Bool in
-        //            let tmp: NSString = text
-        //            let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
-        //            return range.location != NSNotFound
-        //        })
-        //        if(filtered.count == 0){
-        //            searchActive = false;
-        //        } else {
-        //            searchActive = true;
-        //        }
-        //        self.tableView.reloadData()
+    func updateSearchResults(for searchController: UISearchController) {
+        applyFilters()
     }
 
 }
@@ -164,6 +199,12 @@ extension FavoriteMoviesListViewController: FavoriteMoviesListViewDelegate {
             .replacingOccurrences(of: ":movieName", with: movie.title ?? "")
         self.toast(withSuccessMessage: message)
         self.loadFavorites()
+    }
+
+    func favoriteMoviesListViewDidRemoveFilter(_ favoriteMoviesListView: FavoriteMoviesListView) {
+        self.searchController.searchBar.text = nil
+        self.favoriteMoviesListView.predicate = nil
+        self.delegate?.favoriteMoviesListShowFilterDidRemoveFilter(self)
     }
 
 }
