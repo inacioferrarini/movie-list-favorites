@@ -143,7 +143,6 @@ class FavoriteMoviesListView: UIView, LanguageAware {
         var height: CGFloat = 0
         if let filter = filter, (filter.genre != nil || filter.year != nil) {
             height = 44
-            print("has filter")
         }
         removeFilterButtonHeightConstraint.constant = height
         removeFilterButton.isHidden = (height == 0)

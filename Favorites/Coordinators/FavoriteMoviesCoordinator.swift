@@ -92,6 +92,14 @@ public class FavoriteMoviesCoordinator: Coordinator, AppContextAware, LanguageAw
         return vc
     }()
 
+    public lazy var modalViewController: UIViewController = {
+        guard let vc = favoriteFilterMenuViewController else { return UIViewController() }
+        let navigationController = UINavigationController(rootViewController: vc)
+        let dismissButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(dismissModal))
+        vc.navigationItem.setRightBarButton(dismissButton, animated: true)
+        return navigationController
+    }()
+
     // MARK: - Filters
 
     lazy var filterFavoriteOptionDate = {
@@ -144,15 +152,21 @@ public class FavoriteMoviesCoordinator: Coordinator, AppContextAware, LanguageAw
 
     func showMovieFilter() {
         if let nav = self.viewController as? UINavigationController,
-            let vc = favoriteFilterMenuViewController {
+            let vc = favoriteFilterMenuViewController,
+            let tabBar = nav.tabBarController {
             vc.favoriteMovieFilter = favoriteMovieFilter
             vc.options = self.favoriteMoviesFilterOptions
-            nav.pushViewController(vc, animated: true)
+            tabBar.present(modalViewController, animated: true, completion: nil)
         }
     }
 
+    @objc
+    func dismissModal() {
+        modalViewController.dismiss(animated: true, completion: nil)
+    }
+
     func showMovieDateFilterOptions() {
-        if let nav = self.viewController as? UINavigationController,
+        if let nav = self.modalViewController as? UINavigationController,
             let vc = filterOptionsViewController,
             let appContext = self.appContext {
             vc.filterOptionKind = FilterOptionKind.date.rawValue
@@ -164,7 +178,7 @@ public class FavoriteMoviesCoordinator: Coordinator, AppContextAware, LanguageAw
     }
 
     func showMovieGenreFilterOptions() {
-        if let nav = self.viewController as? UINavigationController,
+        if let nav = self.modalViewController as? UINavigationController,
             let vc = filterOptionsViewController,
             let appContext = self.appContext {
             vc.filterOptionKind = FilterOptionKind.genre.rawValue
@@ -210,7 +224,7 @@ extension FavoriteMoviesCoordinator: FavoriteFilterMenuViewControllerDelegate {
 
     func favoriteFilterMenuViewController(_ favoriteFilterViewController: FavoriteFilterMenuViewController, didApplied filter: FavoriteMovieFilter) {
         favoriteMoviesViewController?.filter = filter
-        favoriteFilterViewController.navigationController?.popViewController(animated: true)
+        self.dismissModal()
     }
 
     func favoriteFilterMenuViewController(_ favoriteFilterViewController: FavoriteFilterMenuViewController, didSelected option: FilterFavoriteOption) {
