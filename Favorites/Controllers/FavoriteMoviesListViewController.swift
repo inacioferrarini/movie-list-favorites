@@ -151,8 +151,12 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded, AppConte
         }
 
         if predicates.count > 0 {
+            let searchText = searchController.searchBar.text ?? ""
+            self.favoriteMoviesListView.searchTextNotFoundMessage = searchWithoutResults
+                .replacingOccurrences(of: ":searchExpression", with: searchText)
             self.favoriteMoviesListView.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
         } else {
+            self.favoriteMoviesListView.searchTextNotFoundMessage = nil
             self.favoriteMoviesListView.predicate = nil
         }
     }
