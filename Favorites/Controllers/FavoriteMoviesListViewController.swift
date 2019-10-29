@@ -159,6 +159,7 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded, AppConte
             self.favoriteMoviesListView.searchTextNotFoundMessage = nil
             self.favoriteMoviesListView.predicate = nil
         }
+        self.favoriteMoviesListView.filter = self.filter
     }
 
 }
@@ -207,7 +208,6 @@ extension FavoriteMoviesListViewController: FavoriteMoviesListViewDelegate {
 
     func favoriteMoviesListViewDidRemoveFilter(_ favoriteMoviesListView: FavoriteMoviesListView) {
         self.searchController.searchBar.text = nil
-        self.favoriteMoviesListView.predicate = nil
         self.delegate?.favoriteMoviesListShowFilterDidRemoveFilter(self)
     }
 
