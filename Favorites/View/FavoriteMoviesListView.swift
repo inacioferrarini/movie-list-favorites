@@ -147,13 +147,11 @@ class FavoriteMoviesListView: XibView, LanguageAware {
 extension FavoriteMoviesListView: Internationalizable {
 
     var unfavoriteMovieActionText: String {
-        guard let language = appLanguage?.rawValue else { return "#INVALID_LANGUAGE#" }
-        return string("unfavoriteMovieActionText", languageCode: language)
+        return s("unfavoriteMovieActionText")
     }
 
     var removeFilterButtonTitle: String {
-        guard let language = appLanguage?.rawValue else { return "#INVALID_LANGUAGE#" }
-        return string("removeFilterButtonTitle", languageCode: language)
+        return s("removeFilterButtonTitle")
     }
 
 }

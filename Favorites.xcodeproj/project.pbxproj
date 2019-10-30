@@ -27,7 +27,6 @@
 		BB1D1F6923497F0800F62E44 /* FilterOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1D1F6723497F0800F62E44 /* FilterOptionTableViewCell.swift */; };
 		BB1D1F6A23497F0800F62E44 /* FilterOptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB1D1F6823497F0800F62E44 /* FilterOptionTableViewCell.xib */; };
 		BB1D1F6C234982EA00F62E44 /* FilterOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1D1F6B234982EA00F62E44 /* FilterOptionsViewController.swift */; };
-		BB1D1F6F2349830E00F62E44 /* FilterOptionsViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB1D1F712349830E00F62E44 /* FilterOptionsViewController.strings */; };
 		BB1D1F74234A2C2A00F62E44 /* AppContext+SearchFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1D1F73234A2C2A00F62E44 /* AppContext+SearchFilters.swift */; };
 		BB1D7139234D967B00213C43 /* FavoriteFilterMenuView.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB60459F2348CDDC0047FA41 /* FavoriteFilterMenuView.strings */; };
 		BB1F18BE2346D5F400A70294 /* FavoriteMoviesListView.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB1F18C02346D5F400A70294 /* FavoriteMoviesListView.strings */; };
@@ -115,8 +114,6 @@
 		BB1D1F6723497F0800F62E44 /* FilterOptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptionTableViewCell.swift; sourceTree = "<group>"; };
 		BB1D1F6823497F0800F62E44 /* FilterOptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterOptionTableViewCell.xib; sourceTree = "<group>"; };
 		BB1D1F6B234982EA00F62E44 /* FilterOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterOptionsViewController.swift; sourceTree = "<group>"; };
-		BB1D1F702349830E00F62E44 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/FilterOptionsViewController.strings"; sourceTree = "<group>"; };
-		BB1D1F722349831000F62E44 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/FilterOptionsViewController.strings"; sourceTree = "<group>"; };
 		BB1D1F73234A2C2A00F62E44 /* AppContext+SearchFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppContext+SearchFilters.swift"; sourceTree = "<group>"; };
 		BB1F18BF2346D5F400A70294 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/FavoriteMoviesListView.strings"; sourceTree = "<group>"; };
 		BB1F18C12346D5F600A70294 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/FavoriteMoviesListView.strings"; sourceTree = "<group>"; };
@@ -209,7 +206,6 @@
 				BB082CF62342C26C00DCE7E1 /* FavoriteMoviesListViewController.swift */,
 				BB082CFE2342F1D400DCE7E1 /* FavoriteMoviesListViewController.strings */,
 				BB1D1F6B234982EA00F62E44 /* FilterOptionsViewController.swift */,
-				BB1D1F712349830E00F62E44 /* FilterOptionsViewController.strings */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -444,7 +440,6 @@
 				BB1D1F5C23490F9400F62E44 /* FilterFavoriteTableViewCell.xib in Resources */,
 				BB1D1F5823490F1800F62E44 /* FavoriteMovieTableViewCell.xib in Resources */,
 				BB1F18BE2346D5F400A70294 /* FavoriteMoviesListView.strings in Resources */,
-				BB1D1F6F2349830E00F62E44 /* FilterOptionsViewController.strings in Resources */,
 				BB1D7139234D967B00213C43 /* FavoriteFilterMenuView.strings in Resources */,
 				BB1C1DCD2342B8260092265D /* FavoriteMoviesListView.xib in Resources */,
 				BB082CF52342C22100DCE7E1 /* Favorites.storyboard in Resources */,
@@ -535,15 +530,6 @@
 				BB082CFF2342F1D600DCE7E1 /* pt-BR */,
 			);
 			name = FavoriteMoviesListViewController.strings;
-			sourceTree = "<group>";
-		};
-		BB1D1F712349830E00F62E44 /* FilterOptionsViewController.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BB1D1F702349830E00F62E44 /* en-US */,
-				BB1D1F722349831000F62E44 /* pt-BR */,
-			);
-			name = FilterOptionsViewController.strings;
 			sourceTree = "<group>";
 		};
 		BB1F18C02346D5F400A70294 /* FavoriteMoviesListView.strings */ = {

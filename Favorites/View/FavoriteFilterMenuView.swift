@@ -102,8 +102,7 @@ class FavoriteFilterMenuView: XibView, LanguageAware {
 extension FavoriteFilterMenuView: Internationalizable {
 
     var applyFilterButtonTitle: String {
-        guard let language = appLanguage?.rawValue else { return "#INVALID_LANGUAGE#" }
-        return string("applyFilterButtonTitle", languageCode: language)
+        return s("applyFilterButtonTitle")
     }
 
 }
