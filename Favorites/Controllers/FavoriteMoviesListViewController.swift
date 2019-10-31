@@ -44,6 +44,8 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded, AppConte
     weak var appContext: AppContext?
     weak var delegate: FavoriteMoviesListViewControllerDelegate?
     let searchController = UISearchController(searchResultsController: nil)
+    let showFiltersButton = UIButton(type: .custom)
+
     var filter: FavoriteMovieFilter? {
         didSet {
             applyFilters()
@@ -80,7 +82,6 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded, AppConte
     }
 
     private func setupNavigationBarItens() {
-        let showFiltersButton = UIButton(type: .custom)
         showFiltersButton.setImage(Assets.Icons.Actions.filter, for: .normal)
         showFiltersButton.addTarget(self, action: #selector(showFilters), for: .touchUpInside)
         let showFiltersButtonItem = UIBarButtonItem(customView: showFiltersButton)
@@ -103,6 +104,7 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded, AppConte
 
     private func setupAccessibility() {
         self.navigationItem.accessibilityLabel = self.accessibilityTitleLabel
+        self.showFiltersButton.accessibilityLabel = self.accessibilityShowFilterButton
         self.searchController.isAccessibilityElement = true
         self.searchController.accessibilityLabel = self.accessibilitySearchLabel
     }
@@ -199,6 +201,10 @@ extension FavoriteMoviesListViewController: Internationalizable {
 
     var accessibilitySearchLabel: String {
         return s("accessibilitySearchLabel")
+    }
+    
+    var accessibilityShowFilterButton: String {
+        return s("accessibilityShowFilterButton")
     }
 
 }

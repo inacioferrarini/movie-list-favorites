@@ -7,3 +7,4 @@
 /* Accessibility */
 "accessibilityTitleLabel" = "Favoritos";
 "accessibilitySearchLabel" = "Entre o que deseja procurar";
+"accessibilityShowFilterButton" = "Mostrar Filtros";

@@ -7,3 +7,4 @@
 /* Accessibility */
 "accessibilityTitleLabel" = "Favorites";
 "accessibilitySearchLabel" = "Enter expression to search";
+"accessibilityShowFilterButton" = "Show Filter";
