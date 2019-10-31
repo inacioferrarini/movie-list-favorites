@@ -1,0 +1,3 @@
+/* Accessibility */
+"accessibilityLabelWithValue" = "Filter by :paramName. Current value :paramValue.";
+"accessibilityLabelWithoutValue" = "Filter by :paramName.";

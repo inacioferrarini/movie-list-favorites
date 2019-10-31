@@ -1,1 +1,4 @@
 "title" = "Filter";
+
+/* Accessibility */
+"accessibilityTitleLabel" = "Filter";

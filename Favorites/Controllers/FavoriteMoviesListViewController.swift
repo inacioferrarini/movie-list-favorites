@@ -202,7 +202,7 @@ extension FavoriteMoviesListViewController: Internationalizable {
     var accessibilitySearchLabel: String {
         return s("accessibilitySearchLabel")
     }
-    
+
     var accessibilityShowFilterButton: String {
         return s("accessibilityShowFilterButton")
     }

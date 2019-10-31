@@ -96,6 +96,7 @@ public class FavoriteMoviesCoordinator: Coordinator, AppContextAware, LanguageAw
         guard let vc = favoriteFilterMenuViewController else { return UIViewController() }
         let navigationController = UINavigationController(rootViewController: vc)
         let dismissButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(dismissModal))
+        dismissButton.accessibilityLabel = dismissButtonAccessibilityLabel
         vc.navigationItem.setRightBarButton(dismissButton, animated: true)
         return navigationController
     }()
@@ -203,6 +204,10 @@ extension FavoriteMoviesCoordinator: Internationalizable {
 
     var filterByGenreOptionTitle: String {
         return s("filterByGenreCellTitle")
+    }
+
+    var dismissButtonAccessibilityLabel: String {
+        return s("dismissButtonAccessibilityLabel")
     }
 
 }

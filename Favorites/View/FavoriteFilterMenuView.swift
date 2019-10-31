@@ -74,6 +74,11 @@ class FavoriteFilterMenuView: XibView, LanguageAware {
 
     private func setup() {
         applyFilterButton.roundBorder(width: 1, radius: 8)
+        self.setupAccessibility()
+    }
+
+    private func setupAccessibility() {
+        applyFilterButton.accessibilityLabel = self.accessibilityApplyButtonLabel
     }
 
     private func setupTitles() {
@@ -84,6 +89,9 @@ class FavoriteFilterMenuView: XibView, LanguageAware {
         let nib = UINib(nibName: FilterFavoriteTableViewCell.simpleClassName(), bundle: Bundle(for: type(of: self)))
         tableView.register(nib, forCellReuseIdentifier: FilterFavoriteTableViewCell.simpleClassName())
         let dataSource = TableViewArrayDataSource<FilterFavoriteTableViewCell, FilterFavoriteOption>(for: tableView, with: dataProvider)
+        dataSource.prepareCellBlock = { [unowned self] (_ cell: FilterFavoriteTableViewCell) in
+            cell.appLanguage = self.appLanguage
+        }
         tableView.dataSource = dataSource
         self.tableViewDataSource = dataSource
         tableView.delegate = self
@@ -103,6 +111,10 @@ extension FavoriteFilterMenuView: Internationalizable {
 
     var applyFilterButtonTitle: String {
         return s("applyFilterButtonTitle")
+    }
+
+    var accessibilityApplyButtonLabel: String {
+        return s("accessibilityApplyButtonLabel")
     }
 
 }

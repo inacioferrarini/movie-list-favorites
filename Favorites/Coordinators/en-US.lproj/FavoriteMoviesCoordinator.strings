@@ -1,3 +1,6 @@
 "tabBarItemTitle" = "Favorites";
 "filterByDateCellTitle" = "Date";
 "filterByGenreCellTitle" = "Genre";
+
+/* Accessibility */
+"dismissButtonAccessibilityLabel" = "Close";

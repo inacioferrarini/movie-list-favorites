@@ -28,12 +28,31 @@ import Ness
 ///
 /// Cell used to display a favorite movie filder
 ///
-class FilterFavoriteTableViewCell: UITableViewCell, Configurable {
+class FilterFavoriteTableViewCell: UITableViewCell, Configurable, LanguageAware {
 
     // MARK: - Outlets
 
     @IBOutlet weak var optionTitleLabel: UILabel!
     @IBOutlet weak var optionValueLabel: UILabel!
+
+    // MARK: - Properties
+
+    var appLanguage: Language?
+
+    // MARK: - Lifecycle
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.setupAccessibility()
+    }
+
+    // MARK: - Accessibility
+
+    func setupAccessibility() {
+        self.optionTitleLabel.isAccessibilityElement = false
+        self.optionValueLabel.isAccessibilityElement = false
+        self.isAccessibilityElement = true
+    }
 
     // MARK: - Setup
 
@@ -48,6 +67,27 @@ class FilterFavoriteTableViewCell: UITableViewCell, Configurable {
         let selectedBackgroundView = UIView()
         selectedBackgroundView.backgroundColor = Assets.Colors.NavigationBar.backgroundColor
         self.selectedBackgroundView = selectedBackgroundView
+
+        if value.value != nil {
+            self.accessibilityLabel = accessibilityLabelWithValue
+                .replacingOccurrences(of: ":paramName", with: value.title ?? "")
+                .replacingOccurrences(of: ":paramValue", with: value.value ?? "")
+        } else {
+            self.accessibilityLabel = accessibilityLabelWithoutValue
+                .replacingOccurrences(of: ":paramName", with: value.title ?? "")
+        }
+    }
+
+}
+
+extension FilterFavoriteTableViewCell: Internationalizable {
+
+    var accessibilityLabelWithValue: String {
+        return s("accessibilityLabelWithValue")
+    }
+
+    var accessibilityLabelWithoutValue: String {
+        return s("accessibilityLabelWithoutValue")
     }
 
 }

@@ -64,6 +64,11 @@ class FavoriteFilterMenuViewController: UIViewController, Storyboarded, AppConte
         self.favoriteFilterMenuView.delegate = self
         self.favoriteFilterMenuView.appLanguage = appContext?.appLanguage
         navigationItem.largeTitleDisplayMode = .never
+        self.setupAccessibility()
+    }
+
+    private func setupAccessibility() {
+        self.navigationItem.accessibilityLabel = self.accessibilityTitleLabel
     }
 
  }
@@ -72,6 +77,10 @@ extension FavoriteFilterMenuViewController: Internationalizable {
 
     var viewControllerTitle: String {
         return s("title")
+    }
+
+    var accessibilityTitleLabel: String {
+        return s("accessibilityTitleLabel")
     }
 
 }

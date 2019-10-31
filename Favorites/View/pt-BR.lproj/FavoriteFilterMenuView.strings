@@ -1,1 +1,4 @@
 "applyFilterButtonTitle" = "Aplicar";
+
+/* Accessibility */
+"accessibilityApplyButtonLabel" = "Aplicar filtros.";
