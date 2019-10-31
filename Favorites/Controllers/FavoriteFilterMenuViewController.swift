@@ -53,17 +53,17 @@ class FavoriteFilterMenuViewController: UIViewController, Storyboarded, AppConte
         self.setup()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.favoriteFilterMenuView.favoriteMovieFilter = favoriteMovieFilter
+        self.favoriteFilterMenuView.filterOptions = options
+    }
+
     private func setup() {
         self.title = viewControllerTitle
         self.favoriteFilterMenuView.delegate = self
         self.favoriteFilterMenuView.appLanguage = appContext?.appLanguage
         navigationItem.largeTitleDisplayMode = .never
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.favoriteFilterMenuView.favoriteMovieFilter = favoriteMovieFilter
-        self.favoriteFilterMenuView.filterOptions = options
     }
 
  }
