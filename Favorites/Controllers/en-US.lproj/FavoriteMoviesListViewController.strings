@@ -3,3 +3,7 @@
 "movieWasUnfavorited" = "Movie \":movieName\" removed from your favorites.";
 "userDoesNotHaveAnyFavorite" = "You don't have any favorite yet.\nWhy not choose some movies?";
 "searchWithoutResults" = "Your search for \":searchExpression\" had no results.";
+
+/* Accessibility */
+"accessibilityTitleLabel" = "Favorites";
+"accessibilitySearchLabel" = "Enter expression to search";

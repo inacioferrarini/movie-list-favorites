@@ -75,7 +75,8 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded, AppConte
         self.favoriteMoviesListView.appLanguage = appContext?.appLanguage
         self.setupNavigationBarItens()
         self.setupSearchController()
-        setupNavigationItem()
+        self.setupNavigationItem()
+        self.setupAccessibility()
     }
 
     private func setupNavigationBarItens() {
@@ -99,6 +100,12 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded, AppConte
         self.navigationItem.hidesSearchBarWhenScrolling = false
         self.navigationItem.searchController = searchController
      }
+
+    private func setupAccessibility() {
+        self.navigationItem.accessibilityLabel = self.accessibilityTitleLabel
+        self.searchController.isAccessibilityElement = true
+        self.searchController.accessibilityLabel = self.accessibilitySearchLabel
+    }
 
     private func loadFavorites() {
         let count = appContext?.favorites.count ?? 0
@@ -184,6 +191,14 @@ extension FavoriteMoviesListViewController: Internationalizable {
 
     var movieWasUnfavoritedMessage: String {
         return s("movieWasUnfavorited")
+    }
+
+    var accessibilityTitleLabel: String {
+        return s("accessibilityTitleLabel")
+    }
+
+    var accessibilitySearchLabel: String {
+        return s("accessibilitySearchLabel")
     }
 
 }

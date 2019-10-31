@@ -28,7 +28,7 @@ import Ness
 ///
 /// Cell used to display a favorite movie
 ///
-class FavoriteMovieTableViewCell: UITableViewCell, Configurable {
+class FavoriteMovieTableViewCell: UITableViewCell, Configurable, LanguageAware {
 
     // MARK: - Outlets
 
@@ -36,6 +36,27 @@ class FavoriteMovieTableViewCell: UITableViewCell, Configurable {
     @IBOutlet weak private(set) var titleLabel: UILabel!
     @IBOutlet weak private(set) var yearLabel: UILabel!
     @IBOutlet weak private(set) var overviewLabel: UILabel!
+
+    // MARK: - Properties
+
+    var appLanguage: Language?
+
+    // MARK: - Lifecycle
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.setupAccessibility()
+    }
+
+    // MARK: - Accessibility
+
+    func setupAccessibility() {
+        self.posterImage.isAccessibilityElement = false
+        self.titleLabel.isAccessibilityElement = false
+        self.yearLabel.isAccessibilityElement = false
+        self.overviewLabel.isAccessibilityElement = false
+        self.isAccessibilityElement = true
+    }
 
     // MARK: - Setup
 
@@ -55,6 +76,20 @@ class FavoriteMovieTableViewCell: UITableViewCell, Configurable {
         }
 
         overviewLabel.text = value.overview ?? ""
+
+        let contentAccessibilityLabel = self.contentAccessibilityLabel
+            .replacingOccurrences(of: ":movieTitle", with: value.title ?? "")
+            .replacingOccurrences(of: ":movieYear", with: yearLabel.text ?? "")
+            .replacingOccurrences(of: ":overview", with: overviewLabel.text ?? "")
+        self.accessibilityLabel = contentAccessibilityLabel
+    }
+
+}
+
+extension FavoriteMovieTableViewCell: Internationalizable {
+
+    var contentAccessibilityLabel: String {
+        return s("contentAccessibilityLabel")
     }
 
 }

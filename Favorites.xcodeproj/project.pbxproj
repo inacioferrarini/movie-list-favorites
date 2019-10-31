@@ -11,6 +11,7 @@
 		BB082CF52342C22100DCE7E1 /* Favorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB082CF42342C22100DCE7E1 /* Favorites.storyboard */; };
 		BB082CF72342C26C00DCE7E1 /* FavoriteMoviesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB082CF62342C26C00DCE7E1 /* FavoriteMoviesListViewController.swift */; };
 		BB082CFC2342F1D400DCE7E1 /* FavoriteMoviesListViewController.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB082CFE2342F1D400DCE7E1 /* FavoriteMoviesListViewController.strings */; };
+		BB0D72A7236A76C1007B4A69 /* FavoriteMovieTableViewCell.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB0D72A9236A76C1007B4A69 /* FavoriteMovieTableViewCell.strings */; };
 		BB1C1DC72342B3580092265D /* Favorite+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C1DC52342B3580092265D /* Favorite+CoreDataClass.swift */; };
 		BB1C1DC82342B3580092265D /* Favorite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1C1DC62342B3580092265D /* Favorite+CoreDataProperties.swift */; };
 		BB1C1DCD2342B8260092265D /* FavoriteMoviesListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB1C1DCC2342B8260092265D /* FavoriteMoviesListView.xib */; };
@@ -98,6 +99,8 @@
 		BB082CF62342C26C00DCE7E1 /* FavoriteMoviesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMoviesListViewController.swift; sourceTree = "<group>"; };
 		BB082CFD2342F1D400DCE7E1 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/FavoriteMoviesListViewController.strings"; sourceTree = "<group>"; };
 		BB082CFF2342F1D600DCE7E1 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/FavoriteMoviesListViewController.strings"; sourceTree = "<group>"; };
+		BB0D72A8236A76C1007B4A69 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/FavoriteMovieTableViewCell.strings"; sourceTree = "<group>"; };
+		BB0D72AA236A76C2007B4A69 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/FavoriteMovieTableViewCell.strings"; sourceTree = "<group>"; };
 		BB1C1DC52342B3580092265D /* Favorite+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorite+CoreDataClass.swift"; sourceTree = "<group>"; };
 		BB1C1DC62342B3580092265D /* Favorite+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorite+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BB1C1DCC2342B8260092265D /* FavoriteMoviesListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteMoviesListView.xib; sourceTree = "<group>"; };
@@ -190,6 +193,7 @@
 			children = (
 				BB1D1F5623490F1800F62E44 /* FavoriteMovieTableViewCell.xib */,
 				BB1D1F5523490F1800F62E44 /* FavoriteMovieTableViewCell.swift */,
+				BB0D72A9236A76C1007B4A69 /* FavoriteMovieTableViewCell.strings */,
 				BB1D1F5A23490F9400F62E44 /* FilterFavoriteTableViewCell.xib */,
 				BB1D1F5923490F9400F62E44 /* FilterFavoriteTableViewCell.swift */,
 				BB1D1F6823497F0800F62E44 /* FilterOptionTableViewCell.xib */,
@@ -437,6 +441,7 @@
 				BB1D1F6A23497F0800F62E44 /* FilterOptionTableViewCell.xib in Resources */,
 				BB6045982348CDA50047FA41 /* FavoriteFilterMenuView.xib in Resources */,
 				BB082CFC2342F1D400DCE7E1 /* FavoriteMoviesListViewController.strings in Resources */,
+				BB0D72A7236A76C1007B4A69 /* FavoriteMovieTableViewCell.strings in Resources */,
 				BB1D1F5C23490F9400F62E44 /* FilterFavoriteTableViewCell.xib in Resources */,
 				BB1D1F5823490F1800F62E44 /* FavoriteMovieTableViewCell.xib in Resources */,
 				BB1F18BE2346D5F400A70294 /* FavoriteMoviesListView.strings in Resources */,
@@ -530,6 +535,15 @@
 				BB082CFF2342F1D600DCE7E1 /* pt-BR */,
 			);
 			name = FavoriteMoviesListViewController.strings;
+			sourceTree = "<group>";
+		};
+		BB0D72A9236A76C1007B4A69 /* FavoriteMovieTableViewCell.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BB0D72A8236A76C1007B4A69 /* en-US */,
+				BB0D72AA236A76C2007B4A69 /* pt-BR */,
+			);
+			name = FavoriteMovieTableViewCell.strings;
 			sourceTree = "<group>";
 		};
 		BB1F18C02346D5F400A70294 /* FavoriteMoviesListView.strings */ = {

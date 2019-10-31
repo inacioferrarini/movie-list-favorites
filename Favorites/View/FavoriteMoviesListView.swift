@@ -121,6 +121,9 @@ class FavoriteMoviesListView: XibView, LanguageAware {
         let nib = UINib(nibName: FavoriteMovieTableViewCell.simpleClassName(), bundle: Bundle(for: type(of: self)))
         tableView.register(nib, forCellReuseIdentifier: FavoriteMovieTableViewCell.simpleClassName())
         let dataSource = TableViewArrayDataSource<FavoriteMovieTableViewCell, Movie>(for: tableView, with: dataProvider)
+        dataSource.prepareCellBlock = { [unowned self] (_ cell: FavoriteMovieTableViewCell) in
+            cell.appLanguage = self.appLanguage
+        }
         tableView.dataSource = dataSource
         self.tableViewDataSource = dataSource
         tableView.delegate = self
