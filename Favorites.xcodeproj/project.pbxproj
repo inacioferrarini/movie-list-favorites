@@ -43,8 +43,6 @@
 		BB699749233B044600EBA6B3 /* Flow.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB699746233B044600EBA6B3 /* Flow.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BB69974A233B044600EBA6B3 /* Ness.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB699747233B044600EBA6B3 /* Ness.framework */; };
 		BB69974B233B044600EBA6B3 /* Ness.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BB699747233B044600EBA6B3 /* Ness.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BBBC155D233D67D200467BD4 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBBC155C233D67D200467BD4 /* SVProgressHUD.framework */; };
-		BBBC155E233D67D200467BD4 /* SVProgressHUD.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BBBC155C233D67D200467BD4 /* SVProgressHUD.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BBBC1561233D680800467BD4 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBBC155F233D680700467BD4 /* Quick.framework */; };
 		BBBC1562233D680800467BD4 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBBC1560233D680700467BD4 /* Nimble.framework */; };
 		BBBC1564233D684000467BD4 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBBC1560233D680700467BD4 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -73,7 +71,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BBBC155E233D67D200467BD4 /* SVProgressHUD.framework in Embed Frameworks */,
 				BB699749233B044600EBA6B3 /* Flow.framework in Embed Frameworks */,
 				BB69974B233B044600EBA6B3 /* Ness.framework in Embed Frameworks */,
 			);
@@ -156,7 +153,6 @@
 			files = (
 				BB69974A233B044600EBA6B3 /* Ness.framework in Frameworks */,
 				BB699748233B044600EBA6B3 /* Flow.framework in Frameworks */,
-				BBBC155D233D67D200467BD4 /* SVProgressHUD.framework in Frameworks */,
 				BBE77CBA2323FDB400A0C872 /* Common.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
