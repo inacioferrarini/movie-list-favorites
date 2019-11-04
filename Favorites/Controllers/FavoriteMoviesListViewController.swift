@@ -223,7 +223,7 @@ extension FavoriteMoviesListViewController: FavoriteMoviesListViewDelegate {
         appContext?.remove(favorite: movie)
         let message = movieWasUnfavoritedMessage
             .replacingOccurrences(of: ":movieName", with: movie.title ?? "")
-        self.toast(withSuccessMessage: message)
+        self.favoriteMoviesListView.showMessage(message, kind: .success, direction: .top)
         self.loadFavorites()
     }
 
