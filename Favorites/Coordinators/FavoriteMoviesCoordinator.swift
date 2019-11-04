@@ -155,7 +155,7 @@ public class FavoriteMoviesCoordinator: Coordinator, AppContextAware, LanguageAw
         if let nav = self.viewController as? UINavigationController,
             let vc = favoriteFilterMenuViewController,
             let tabBar = nav.tabBarController {
-            vc.favoriteMovieFilter = favoriteMovieFilter
+            vc.favoriteMovieFilter = self.favoriteMovieFilter
             vc.options = self.favoriteMoviesFilterOptions
             tabBar.present(modalViewController, animated: true, completion: nil)
         }
