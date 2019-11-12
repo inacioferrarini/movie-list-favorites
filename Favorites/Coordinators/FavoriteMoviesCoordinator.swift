@@ -89,6 +89,7 @@ public class FavoriteMoviesCoordinator: Coordinator, AppContextAware, LanguageAw
     private lazy var filterOptionsViewController: FilterOptionsViewController? = {
         let vc = FilterOptionsViewController.instantiate(from: "Favorites")
         vc?.delegate = self
+        vc?.appContext = self.appContext
         return vc
     }()
 

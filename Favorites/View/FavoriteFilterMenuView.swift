@@ -63,6 +63,8 @@ class FavoriteFilterMenuView: XibView, LanguageAware {
         }
     }
 
+    var appTheme: AppThemeProtocol?
+
     weak var delegate: FavoriteFilterMenuViewDelegate?
 
     // MARK: - Initialization
@@ -91,6 +93,7 @@ class FavoriteFilterMenuView: XibView, LanguageAware {
         let dataSource = TableViewArrayDataSource<FilterFavoriteTableViewCell, FilterFavoriteOption>(for: tableView, with: dataProvider)
         dataSource.prepareCellBlock = { [unowned self] (_ cell: FilterFavoriteTableViewCell) in
             cell.appLanguage = self.appLanguage
+            cell.appTheme = self.appTheme
         }
         tableView.dataSource = dataSource
         self.tableViewDataSource = dataSource
