@@ -89,8 +89,8 @@ class FavoriteMoviesListViewController: UIViewController, Storyboarded, AppConte
     }
 
     private func setupSearchController() {
-        self.searchController.searchBar.barTintColor = Assets.Colors.NavigationBar.backgroundColor
-        self.searchController.searchBar.setTextBackground(Assets.Colors.NavigationBar.textBackgroundColor)
+        self.searchController.searchBar.barTintColor = appContext?.appTheme?.navBar.backgroundColor
+        self.searchController.searchBar.setTextBackground(appContext?.appTheme?.navBar.textBackgroundColor)
         self.searchController.searchResultsUpdater = self
         self.searchController.obscuresBackgroundDuringPresentation = false
         self.searchController.searchBar.placeholder = searchPlaceholder

@@ -63,6 +63,7 @@ class FavoriteFilterMenuViewController: UIViewController, Storyboarded, AppConte
         self.title = viewControllerTitle
         self.favoriteFilterMenuView.delegate = self
         self.favoriteFilterMenuView.appLanguage = appContext?.appLanguage
+        self.favoriteFilterMenuView.appTheme = appContext?.appTheme
         navigationItem.largeTitleDisplayMode = .never
         self.setupAccessibility()
     }

@@ -34,6 +34,10 @@ class FilterOptionTableViewCell: UITableViewCell, Configurable {
 
     @IBOutlet weak var optionTitleLabel: UILabel!
 
+    // MARK: - Properties
+
+    var appTheme: AppThemeProtocol?
+
     // MARK: - Setup
 
     func setup(with value: FilterOption) {
@@ -41,12 +45,12 @@ class FilterOptionTableViewCell: UITableViewCell, Configurable {
 
         let isChecked = value.isSelected ?? false
         accessoryType = isChecked ? .checkmark : .none
-        if let tintColor = Assets.Colors.NavigationBar.backgroundColor {
+        if let tintColor = appTheme?.navBar.backgroundColor {
             self.tintColor = tintColor
         }
 
         let selectedBackgroundView = UIView()
-        selectedBackgroundView.backgroundColor = Assets.Colors.NavigationBar.backgroundColor
+        selectedBackgroundView.backgroundColor = appTheme?.navBar.backgroundColor
         self.selectedBackgroundView = selectedBackgroundView
     }
 
