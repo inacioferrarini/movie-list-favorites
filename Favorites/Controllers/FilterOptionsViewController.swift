@@ -31,7 +31,7 @@ protocol FilterOptionsViewControllerDelegate: AnyObject {
 
 }
 
-class FilterOptionsViewController: UIViewController, Storyboarded, AppContextAware {
+class FilterOptionsViewController: UIViewController, Storyboarded {
 
     // MARK: - Outlets
 
@@ -39,7 +39,6 @@ class FilterOptionsViewController: UIViewController, Storyboarded, AppContextAwa
 
     // MARK: - Properties
 
-    weak var appContext: AppContext?
     weak var delegate: FilterOptionsViewControllerDelegate?
     var filterOptionKind: Int?
     var options: [FilterOption]? {
@@ -64,7 +63,6 @@ class FilterOptionsViewController: UIViewController, Storyboarded, AppContextAwa
 
     private func setup() {
         self.filterOptionsView.delegate = self
-        self.filterOptionsView.appTheme = appContext?.appTheme
     }
 
 }

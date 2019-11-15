@@ -38,7 +38,6 @@ class FilterFavoriteTableViewCell: UITableViewCell, Configurable, LanguageAware 
     // MARK: - Properties
 
     var appLanguage: Language?
-    var appTheme: AppThemeProtocol?
 
     // MARK: - Lifecycle
 
@@ -61,12 +60,12 @@ class FilterFavoriteTableViewCell: UITableViewCell, Configurable, LanguageAware 
         optionTitleLabel.text = value.title ?? ""
         optionValueLabel.text = value.value ?? ""
         accessoryType = .disclosureIndicator
-        if let textColor = appTheme?.navBar.titleColor {
+        if let textColor = Assets.Colors.NavigationBar.titleColor {
             self.setDisclosureIndicatorColor(textColor)
         }
 
         let selectedBackgroundView = UIView()
-        selectedBackgroundView.backgroundColor = appTheme?.navBar.backgroundColor
+        selectedBackgroundView.backgroundColor = Assets.Colors.NavigationBar.backgroundColor
         self.selectedBackgroundView = selectedBackgroundView
 
         if value.value != nil {

@@ -44,8 +44,6 @@ class FilterOptionsView: XibView {
 
     // MARK: - Properties
 
-    var appTheme: AppThemeProtocol?
-
     var filterOptionKind: Int?
 
     var options: [FilterOption]? {
@@ -73,9 +71,6 @@ class FilterOptionsView: XibView {
         let nib = UINib(nibName: FilterOptionTableViewCell.simpleClassName(), bundle: Bundle(for: type(of: self)))
         tableView.register(nib, forCellReuseIdentifier: FilterOptionTableViewCell.simpleClassName())
         let dataSource = TableViewArrayDataSource<FilterOptionTableViewCell, FilterOption>(for: tableView, with: dataProvider)
-        dataSource.prepareCellBlock = { [unowned self] (_ cell: FilterOptionTableViewCell) in
-            cell.appTheme = self.appTheme
-        }
         tableView.dataSource = dataSource
         self.tableViewDataSource = dataSource
         tableView.delegate = self
